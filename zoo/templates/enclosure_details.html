@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Домики
+
+{% endblock %}
+
+{% block content %}
+<ul>
+
+    <li>Номер помещения: {{enclosure.number}}</li>
+    <li>Название: {{enclosure.name}}</li>
+    <li>Есть ли вода: {% if enclosure.has_water %}Есть{% else %}Нет{% endif %}</li>
+    <li>Площадь: {{enclosure.area}} кв. м.</li>
+    <li>Есть ли отопление: {% if enclosure.has_heating %}Есть{% else %}Нет{% endif %}</li>
+    <li>Жители:
+    <ul>
+        {% for animal in enclosure.animals.all %}
+            <li><a href="{% url 'zoo:animal_details' animal.id %}">{{animal.name}}</a></li>
+        {% endfor %}
+    </ul>
+</li>
+
+
+</ul>
+{% endblock %}

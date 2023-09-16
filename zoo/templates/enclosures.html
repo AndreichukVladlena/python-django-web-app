@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Домики
+
+{% endblock %}
+
+{% block content %}
+
+
+<ul>
+
+
+
+{% for enclosure in enclosures %}
+<li>
+   <img src="{{enclosure.photo.url}}">
+
+   <a href="{% url 'zoo:enclosure_details' enclosure.id %}">{{enclosure.name}}, {{enclosure.photo}}</a>
+
+</li>
+
+{% endfor %}
+
+</ul>
+{% endblock %}

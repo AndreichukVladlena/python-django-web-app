@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Главная страница
+
+{% endblock %}
+
+{% block content %}
+<ul>
+{% for animal in animals%}
+<li>
+    <h2><a href="{% url 'zoo:animal_details' animal.id %}" width="200">{{animal.name}}</a></h2>
+    <img src="{{animal.photo.url}}" alt="image">
+    <br>
+    <p>{{animal.facts}}</p>
+</li>
+{% endfor %}
+</ul>
+
+<ul>
+{% for enclosure in enclosures%}
+<li>
+    <h2><a href="{% url 'zoo:enclosure_details' enclosure.id %}" width="200">{{enclosure.name}}</a></h2>
+    <img src="{{enclosure.photo.url}}" alt="image">
+    <br>
+    <p>{{enclosure.animals}}</p>
+</li>
+{% endfor %}
+</ul>
+{%if user.is_authenticated%}
+<h3> Joke 4u - {{joke.setup}} </h3>
+<h3> Cat fact - {{cat.fact}} </h3>
+{%endif%}
+{% endblock %}

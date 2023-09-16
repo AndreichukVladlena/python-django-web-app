@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ЗооЧудо{% endblock %}</title>
+    <!-- Включение общих стилей CSS -->
+</head>
+<body>
+    <!-- Навигационное меню -->
+    <nav>
+        <ul>
+            <li><a href="/index">Главная</a></li>
+            <li><a href="/animals">Животные</a></li>
+            <li><a href="/enclosures">Их домики</a></li>
+            <li><a href="/about">О нас</a></li>
+            {% if user.is_authenticated %}
+            <br><br>
+            <li><a href="/profile">Моя страница</a></li>
+            {% endif %}
+        </ul>
+        {% if user.is_authenticated %}
+            <li><button style="color:palevioletred;" onclick="location.href='/logout_view'">Выйти</button></li>
+        {% else %}
+            <li><button style="color:palevioletred;" onclick="location.href='/login_view'">Войти</button></li>
+            <li><button style="color:palevioletred;" onclick="location.href='/register'">Зарегистрироваться</button></li>
+        {% endif %}
+    </nav>
+
+
+    <!-- Блок контента -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        &copy; {% now "Y" %} ЗооЧудо
+    </footer>
+
+</body>
+</html>

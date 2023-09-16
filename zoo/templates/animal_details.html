@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+{{animal.name}}
+
+{% endblock %}
+
+{% block content %}
+<!--{%if request%}-->
+
+<div>
+    <a href="edit/{{animal.id}}/">Edit info</a>
+    <a href="delete/{{animal.id}}">Delete product</a>
+
+</div>
+<!--{%endif%}-->
+<img src="{{animal.photo.url}}">
+<ul>
+
+    <li>{{animal.name}}</li>
+    <li>Вид: {{animal.species}}</li>
+    <li>Класс: {{animal.class_name}}</li>
+    <li>Дата поступления в зоопарк: {{animal.entry_date}}</li>
+    <li>Год рождения: {{animal.birth_year}}</li>
+    <li>Что кушает: {{animal.food}}</li>
+    <li>Описание: {{animal.facts}}</li>
+
+</ul>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Животные
+
+{% endblock %}
+
+{% block content %}
+<ul>
+{% for animal in animals%}
+<li>
+    <h2><a href="{% url 'zoo:animal_details' animal.id %}" width="200">{{animal.name}}</a></h2>
+    <img src="{{animal.photo.url}}" alt="image">
+    <br>
+    <p>{{animal.facts}}</p>
+</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

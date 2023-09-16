@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Профиль сотрудника
+
+{% endblock %}
+
+{% block content %}
+    <h1>Профиль сотрудника: {{ employee.first_name }} {{ employee.last_name }}</h1>
+
+    <h2>Информация о сотруднике</h2>
+    <p>Номер досматриваемого помещения: {{ employee.position }}</p>
+
+    <h2>Назначенные помещения</h2>
+    <ul>
+        {% for enclosure in assigned_enclosure %}
+            <li><a href="{% url 'zoo:enclosure_details' enclosure.id %}">{{enclosure.name}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
