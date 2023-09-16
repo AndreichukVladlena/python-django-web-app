@@ -104,9 +104,10 @@ def profile(request):
     # Представление для отображения профиля пользователя
     user = request.user
 
-    if user.is_staff:
+    if user.is_staff and Employee.objects.filter(user=user).exists():
         employee = Employee.objects.get(user=user)
-        assigned_enclosure = employee.assigned_enclosure.all()
+        # assigned_enclosure = employee.assigned_enclosure.all()
+        assigned_enclosure = Enclosure.objects.filter(employee__user=user)
         context = {
             'user': user,
             'employee': employee,
