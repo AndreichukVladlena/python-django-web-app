@@ -7,15 +7,16 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Профиль сотрудника: {{ employee.employee_first_name }} {{ employee.employee_last_name }}</h1>
+    <h1>Профиль сотрудника: {{ employee }}</h1>
+    <br>
+    <p><b>Номер телефона:</b> {{ employee.phone_number }}</p>
+    <p><b>Должность:</b> {{ employee.position }}</p>
+    <p><b>Описание обязанностей:</b> {{ employee.position.description }}</p>
 
-    <h2>Информация о сотруднике: </h2>
-    <p>Номер досматриваемого помещения: {{ employee.position }}</p>
-
-    <h2>Назначенные помещения: </h2>
+    <p><b>Назначенные помещения:</b></p>
     <ul>
         {% for enclosure in assigned_enclosure %}
-            <li><a href="{% url 'zoo:enclosure_details' enclosure.id %}">{{enclosure.name}}</a></li>
+            <li><a href="{% url 'zoo:enclosure_details' enclosure.id %}">{{enclosure.name}}({{enclosure.number}})</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

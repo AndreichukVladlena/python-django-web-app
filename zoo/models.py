@@ -107,4 +107,4 @@ class Employee(models.Model):
         return self.user.last_name
 
     def __str__(self):
-        return f'{self.employee_first_name()}, {self.employee_last_name()}'
+        return f'{self.employee_first_name()} {self.employee_last_name()}'
