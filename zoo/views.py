@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from .models import Animal, Enclosure, Employee, CustomUser
+from .models import Animal, Enclosure, Employee, CustomUser, FoodConsumption
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 import requests
@@ -132,8 +132,22 @@ def staff_enclosures(request):
         error_message = "Пользователь не является сотрудником."
         return render(request, 'staff_enclosures.html', {'error_message': error_message})
 
-
-
+def animals_food_consumption(request, user_id):
+    if request.user.is_staff:
+        # user = request.user
+        user = CustomUser.objects.get(pk=user_id)
+        # user_id = user.id
+        animals = Animal.objects.filter(user=user)
+        food_consumptions = FoodConsumption.objects.filter(user_id=user_id)
+        context = {
+            'user': user,
+            'animals': animals,
+            'food_consumptions': food_consumptions,
+        }
+        return render(request, 'animals_food_consumption.html', context)
+    else:
+        error_message = "Пользователь не является сотрудником."
+        return render(request, 'animals_food_consumption.html', {'error_message': error_message})
 
 
 @staff_member_required

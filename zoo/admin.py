@@ -9,7 +9,7 @@ class FoodAdmin(admin.ModelAdmin):
     list_display = ('name', 'composition')
 
 class FoodConsumptionAdmin(admin.ModelAdmin):
-    list_display = ('animal', 'food', 'date', 'daily_amount')
+    list_display = ('user_id', 'animal', 'food', 'date', 'daily_amount')
 
 class EmployeeAdmin(admin.ModelAdmin):
     list_display = ('employee_first_name', 'employee_last_name', 'phone_number', 'assigned_enclosure', 'position')

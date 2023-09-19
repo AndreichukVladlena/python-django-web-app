@@ -33,8 +33,18 @@ class HabitatCountry(models.Model):
     def __str__(self):
         return self.name
 
+class CustomUser(AbstractUser):
+    username = models.CharField(unique=True, max_length=20)
+    email = models.EmailField(verbose_name='email address', unique=True, max_length=244)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=50, null=True, blank=True)
+    is_staff = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.first_name}, {self.last_name}'
 
 class Animal(models.Model):
+    user = models.ManyToManyField(CustomUser)
     name = models.CharField(max_length=100)
     species = models.OneToOneField(AnimalSpecies, on_delete=models.CASCADE)
     animal_class = models.OneToOneField(AnimalClass, on_delete=models.CASCADE)
@@ -51,14 +61,6 @@ class Animal(models.Model):
     def get_absolute_url(self):
         return reverse('zoo:animal_details', args=[str(self.id)])
 
-class FoodConsumption(models.Model):
-    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
-    food = models.ForeignKey(Food, on_delete=models.CASCADE)
-    date = models.DateField()
-    daily_amount = models.DecimalField(max_digits=5, decimal_places=2)
-
-    def __str__(self) :
-        return f'{self.animal.name}, {self.food.name}, {self.date}'
 
 class Enclosure(models.Model):
     number = models.IntegerField()
@@ -75,15 +77,17 @@ class Enclosure(models.Model):
         return reverse('zoo:enclosure_details', args=[str(self.id)])
 
 
-class CustomUser(AbstractUser):
-    username = models.CharField(unique=True, max_length=20)
-    email = models.EmailField(verbose_name='email address', unique=True, max_length=244)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=50, null=True, blank=True)
-    is_staff = models.BooleanField(default=False)
+
+class FoodConsumption(models.Model):
+    user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+    food = models.ForeignKey(Food, on_delete=models.CASCADE)
+    date = models.DateField()
+    daily_amount = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return f'{self.first_name}, {self.last_name}'
+        return f'{self.animal.name}, {self.food.name}, {self.date}'
+
 
 class EmployeePosition(models.Model):
     title = models.CharField(max_length=100)

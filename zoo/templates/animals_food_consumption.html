@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Трекер питания
+
+{% endblock %}
+
+{% block content %}
+
+<h1>Трекер питания моих животных</h1>
+
+{% if user.is_staff %}
+    <ul>
+        {% for animal in animals %}
+            <li><a href="{% url 'zoo:animal_details' animal.id %}">{{animal.name}}</a></li>
+                <ul>
+                    {% for food_consumption in food_consumptions %}
+                    {% if food_consumption.animal == animal %}
+                        <p><b>Еда:</b> {{food_consumption.food.name}}</p>
+                        <p><b>Состав:</b> {{food_consumption.food.composition}}</p>
+                        <p><b>Дата:</b> {{food_consumption.date}}</p>
+                        <p><b>Количество:</b> {{food_consumption.daily_amount}} гр.</p>
+
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>{{ error_message }}</p>
+{% endif %}
+
+
+{% endblock %}
