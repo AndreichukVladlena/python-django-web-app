@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from .models import Animal, Enclosure, Employee, CustomUser, FoodConsumption
+from .models import Animal, Enclosure, Employee, CustomUser, FoodConsumption, News
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 import requests
@@ -166,6 +166,16 @@ def animals_food_consumption(request):
         error_message = "Пользователь не является сотрудником."
         return render(request, 'animals_food_consumption.html', {'error_message': error_message})
 
+def news(request):
+    news_list = News.objects.all()
+    return render(request, 'news_list.html', {'news_list': news_list})
+
+def news_detail(request, news_id):
+    news = News.objects.get(pk=news_id)
+    context = {
+        'news': news,
+    }
+    return render(request, 'news_detail.html', context)
 
 @staff_member_required
 def superuser_view(request):

@@ -112,3 +112,12 @@ class Employee(models.Model):
 
     def __str__(self):
         return f'{self.employee_first_name()} {self.employee_last_name()}'
+
+class News(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    image = models.ImageField(upload_to='news_photos/')
+    publication_date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

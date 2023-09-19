@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+{{news.title}}
+
+{% endblock %}
+
+{% block content %}
+
+<img src="{{news.image.url}}" width="400">
+<p><b>Дата:</b> {{news.publication_date}}</p>
+<p>{{news.content}}</p>
+
+{% endblock %}

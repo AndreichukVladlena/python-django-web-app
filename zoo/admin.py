@@ -32,6 +32,9 @@ class HabitatCountryAdmin(admin.ModelAdmin):
 class EmployeePositionAdmin(admin.ModelAdmin):
     list_display = ('title', 'description')
 
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'content', 'publication_date')
+
 
 
 admin.site.register(Animal, AnimalAdmin)
@@ -44,3 +47,5 @@ admin.site.register(Food, FoodAdmin)
 admin.site.register(FoodConsumption, FoodConsumptionAdmin)
 admin.site.register(Enclosure, EnclosureAdmin)
 admin.site.register(Employee, EmployeeAdmin)
+
+admin.site.register(News, NewsAdmin)

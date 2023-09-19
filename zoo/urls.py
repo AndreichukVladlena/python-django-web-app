@@ -19,7 +19,8 @@ urlpatterns = [
     path('staff_enclosures', views.staff_enclosures, name='staff_enclosures'),
     path('animals_food_consumption', views.animals_food_consumption, name='animals_food_consumption'),
 
-    path('news', views.news, name='news'),
+    path('news_list', views.news, name='news'),
+    path('news_detail/<int:news_id>', views.news_detail, name='news_detail'),
 
     # Другие URL-маршруты для вашего приложения
 ]
