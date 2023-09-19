@@ -16,5 +16,6 @@ urlpatterns = [
     path('enclosures', views.enclosures, name='enclosures'),
     path('enclosures/<int:enclosure_id>', views.enclosure_details, name='enclosure_details'),
     path('profile', views.profile, name='profile'),
+    path('staff_enclosures', views.staff_enclosures, name='staff_enclosures'),
     # Другие URL-маршруты для вашего приложения
 ]

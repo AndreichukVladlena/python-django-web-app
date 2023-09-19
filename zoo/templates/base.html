@@ -18,6 +18,12 @@
             <br><br>
             <li><a href="/profile">Моя страница</a></li>
             {% endif %}
+            {% if user.is_staff %}
+            <li><a href="/staff_enclosures">Мои помещения</a></li>
+            {% endif %}
+            {% if user.is_staff %}
+            <li><a href="/animals_food_consumption">Трекер питания моих животных</a></li>
+            {% endif %}
         </ul>
         {% if user.is_authenticated %}
             <li><button style="color:palevioletred;" onclick="location.href='/logout_view'">Выйти</button></li>

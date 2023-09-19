@@ -106,7 +106,6 @@ def profile(request):
 
     if user.is_staff and Employee.objects.filter(user=user).exists():
         employee = Employee.objects.get(user=user)
-        # assigned_enclosure = employee.assigned_enclosure.all()
         assigned_enclosure = Enclosure.objects.filter(employee__user=user)
         context = {
             'user': user,
@@ -119,6 +118,23 @@ def profile(request):
             'user': user,
         }
         return render(request, 'user_profile.html', context)
+
+def staff_enclosures(request):
+    if request.user.is_staff:
+        user = request.user
+        assigned_enclosure = Enclosure.objects.filter(employee__user=user)
+        context = {
+            'user': user,
+            'assigned_enclosure': assigned_enclosure,
+        }
+        return render(request, 'staff_enclosures.html', context)
+    else:
+        error_message = "Пользователь не является сотрудником."
+        return render(request, 'staff_enclosures.html', {'error_message': error_message})
+
+
+
+
 
 @staff_member_required
 def superuser_view(request):
