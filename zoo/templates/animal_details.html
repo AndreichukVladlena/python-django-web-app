@@ -21,10 +21,24 @@
     <li>{{animal.name}}</li>
     <li>Вид: {{animal.species}}</li>
     <li>Класс: {{animal.animal_class}}</li>
-    <li>Страна обитания: {{animal.habitat_countries}}</li>
+    <li>Страна обитания:
+        <ul>
+        {% for habitat_country in animal.habitat_countries.all%}
+            <li>{{habitat_country}}</li>
+            <p>Описание: {{habitat_country.description}}</p>
+        {% endfor %}
+        </ul>
+    </li>
     <li>Дата поступления в зоопарк: {{animal.entry_date}}</li>
     <li>Год рождения: {{animal.birth_year}}</li>
-    <li>Что кушает: {{animal.food}}</li>
+    <li>Что кушает:
+    <ul>
+        {% for item in animal.food.all %}
+            <li>{{item}}</li>
+        <p>Состав: {{item.composition}}</p>
+        {% endfor %}
+    </ul>
+    </li>
     <li>Описание: {{animal.facts}}</li>
 
 </ul>
