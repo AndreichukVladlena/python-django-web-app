@@ -132,19 +132,36 @@ def staff_enclosures(request):
         error_message = "Пользователь не является сотрудником."
         return render(request, 'staff_enclosures.html', {'error_message': error_message})
 
-def animals_food_consumption(request, user_id):
+def animals_food_consumption(request):
     if request.user.is_staff:
-        # user = request.user
-        user = CustomUser.objects.get(pk=user_id)
-        # user_id = user.id
+        # user = CustomUser.objects.get(pk=user_id)
+        # user_animals = Animal.objects.filter(user=user)
+        # food_consumptions = FoodConsumption.objects.filter(user_id=user_id)
+        # context = {
+        #     'user': user,
+        #     'animals': user_animals,
+        #     'food_consumptions': food_consumptions,
+        # }
+        # return render(request, 'animals_food_consumption.html', context)
+        selected_animal_id = request.GET.get('selected_animal_id', None)
+
+        if selected_animal_id is not None:
+            animal = Animal.objects.get(pk=selected_animal_id)
+            food_consumptions = FoodConsumption.objects.filter(animal=animal)
+        else:
+            animal = None
+            food_consumptions = []
+
+        user = request.user
         animals = Animal.objects.filter(user=user)
-        food_consumptions = FoodConsumption.objects.filter(user_id=user_id)
         context = {
-            'user': user,
             'animals': animals,
+            'selected_animal': animal,
             'food_consumptions': food_consumptions,
         }
+
         return render(request, 'animals_food_consumption.html', context)
+
     else:
         error_message = "Пользователь не является сотрудником."
         return render(request, 'animals_food_consumption.html', {'error_message': error_message})

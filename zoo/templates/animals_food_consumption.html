@@ -11,22 +11,33 @@
 <h1>Трекер питания моих животных</h1>
 
 {% if user.is_staff %}
-    <ul>
-        {% for animal in animals %}
-            <li><a href="{% url 'zoo:animal_details' animal.id %}">{{animal.name}}</a></li>
-                <ul>
-                    {% for food_consumption in food_consumptions %}
-                    {% if food_consumption.animal == animal %}
-                        <p><b>Еда:</b> {{food_consumption.food.name}}</p>
-                        <p><b>Состав:</b> {{food_consumption.food.composition}}</p>
-                        <p><b>Дата:</b> {{food_consumption.date}}</p>
-                        <p><b>Количество:</b> {{food_consumption.daily_amount}} гр.</p>
+       <form method="get">
+        <select name="selected_animal_id">
+            <option value="">Выберите животное</option>
+            {% for animal in animals %}
+            <option value="{{ animal.id }}">{{ animal.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Показать данные">
+    </form>
 
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-        {% endfor %}
-    </ul>
+     <div id="animalData">
+        {% if selected_animal %}
+        <h3>{{ selected_animal.name }}</h3>
+        <ul>
+            {% for food_consumption in food_consumptions %}
+            <li>
+                <p><b>Еда:</b> {{ food_consumption.food.name }}</p>
+                <p><b>Состав:</b> {{ food_consumption.food.composition }}</p>
+                <p><b>Дата:</b> {{ food_consumption.date }}</p>
+                <p><b>Количество:</b> {{ food_consumption.daily_amount }} гр.</p>
+            </li>
+            {% endfor %}
+        </ul>
+         {% else %}
+         <p style="color: palevioletred;">Выберите животное</p>
+         {% endif %}
+    </div>
 {% else %}
     <p>{{ error_message }}</p>
 {% endif %}

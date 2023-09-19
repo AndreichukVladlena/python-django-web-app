@@ -46,8 +46,8 @@ class CustomUser(AbstractUser):
 class Animal(models.Model):
     user = models.ManyToManyField(CustomUser)
     name = models.CharField(max_length=100)
-    species = models.OneToOneField(AnimalSpecies, on_delete=models.CASCADE)
-    animal_class = models.OneToOneField(AnimalClass, on_delete=models.CASCADE)
+    species = models.ForeignKey(AnimalSpecies, on_delete=models.CASCADE, default=1)
+    animal_class = models.ForeignKey(AnimalClass, on_delete=models.CASCADE, default=1)
     habitat_countries = models.ManyToManyField(HabitatCountry)
     entry_date = models.DateField()
     birth_year = models.IntegerField()
@@ -79,7 +79,7 @@ class Enclosure(models.Model):
 
 
 class FoodConsumption(models.Model):
-    user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
     date = models.DateField()
@@ -102,7 +102,7 @@ class Employee(models.Model):
         regex=r'^(\+375 \(29\) [0-9]{3}-[0-9]{2}-[0-9]{2})$',
         message='Format +375 (29) XXX-XX-XX',
     )])
-    assigned_enclosure = models.ForeignKey(Enclosure, on_delete=models.CASCADE)
+    assigned_enclosure = models.ManyToManyField(Enclosure)
     position = models.OneToOneField(EmployeePosition, on_delete=models.CASCADE)
     def employee_first_name(self):
         return self.user.first_name

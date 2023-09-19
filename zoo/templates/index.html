@@ -10,8 +10,8 @@
 <ul>
 {% for animal in animals%}
 <li>
-    <h2><a href="{% url 'zoo:animal_details' animal.id %}" width="200">{{animal.name}}</a></h2>
-    <img src="{{animal.photo.url}}" alt="image">
+    <h2><a href="{% url 'zoo:animal_details' animal.id %}">{{animal.name}}</a></h2>
+    <img src="{{animal.photo.url}}" alt="image" width="400">
     <br>
     <p>{{animal.facts}}</p>
 </li>

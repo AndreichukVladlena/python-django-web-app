@@ -2,17 +2,17 @@ from django.contrib import admin
 from .models import *
 
 class AnimalAdmin(admin.ModelAdmin):
-    list_display = ('name', 'species', 'animal_class', 'entry_date', 'birth_year', 'photo', 'facts')
+    list_display = ('name', 'entry_date', 'birth_year', 'photo', 'facts')
 
 
 class FoodAdmin(admin.ModelAdmin):
     list_display = ('name', 'composition')
 
 class FoodConsumptionAdmin(admin.ModelAdmin):
-    list_display = ('user_id', 'animal', 'food', 'date', 'daily_amount')
+    list_display = ('user', 'animal', 'food', 'date', 'daily_amount')
 
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ('employee_first_name', 'employee_last_name', 'phone_number', 'assigned_enclosure', 'position')
+    list_display = ('employee_first_name', 'employee_last_name', 'phone_number', 'position')
 
 class EnclosureAdmin(admin.ModelAdmin):
     list_display = ('number', 'name', 'has_water', 'area', 'heating')

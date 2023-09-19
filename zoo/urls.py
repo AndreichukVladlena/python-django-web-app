@@ -17,7 +17,9 @@ urlpatterns = [
     path('enclosures/<int:enclosure_id>', views.enclosure_details, name='enclosure_details'),
     path('profile', views.profile, name='profile'),
     path('staff_enclosures', views.staff_enclosures, name='staff_enclosures'),
-    path('animals_food_consumption/<int:user_id>', views.animals_food_consumption, name='animals_food_consumption'),
+    path('animals_food_consumption', views.animals_food_consumption, name='animals_food_consumption'),
+
+    path('news', views.news, name='news'),
 
     # Другие URL-маршруты для вашего приложения
 ]
