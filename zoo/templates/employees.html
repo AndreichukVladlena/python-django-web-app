@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Сотрудники
+
+{% endblock %}
+
+{% block content %}
+<ul>
+{% for employee in employees%}
+ <table>
+        <tr><td>
+    <img src={{employee.image.url}} width="300">
+        </td>
+            <td>
+    <p><b>Номер телефона:</b> {{ employee.phone_number }}</p>
+    <p><b>Должность:</b> {{ employee.position }}</p>
+    <p><b>Описание обязанностей:</b> {{ employee.position.description }}</p>
+
+    <p><b>Назначенные помещения:</b></p>
+    <ul>
+        {% for enclosure in employee.assigned_enclosure.all %}
+            <li><a href="{% url 'zoo:enclosure_details' enclosure.id %}">{{enclosure.name}}({{enclosure.number}})</a></li>
+        {% endfor %}
+    </ul>
+            </td>
+        </tr>
+    </table>
+{% endfor %}
+</ul>
+
+{% endblock %}
