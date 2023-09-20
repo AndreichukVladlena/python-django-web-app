@@ -18,7 +18,7 @@ class EnclosureAdmin(admin.ModelAdmin):
     list_display = ('number', 'name', 'has_water', 'area', 'heating')
 
 class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'password')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'password', 'birth_date')
 
 class AnimalSpeciesAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')

@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.core.validators import RegexValidator
 from django.db import models
 from django.urls import reverse
+from datetime import datetime
 
 class Food(models.Model):
     name = models.CharField(max_length=100)
@@ -39,6 +40,7 @@ class CustomUser(AbstractUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=50, null=True, blank=True)
     is_staff = models.BooleanField(default=False)
+    birth_date = models.DateField(default=datetime(2004, 6, 27))
 
     def __str__(self):
         return f'{self.first_name}, {self.last_name}'
@@ -103,6 +105,7 @@ class Employee(models.Model):
         message='Format +375 (29) XXX-XX-XX',
     )])
     assigned_enclosure = models.ManyToManyField(Enclosure)
+    image = models.ImageField(upload_to='employees_photos/', default='media/unknown.png')
     position = models.OneToOneField(EmployeePosition, on_delete=models.CASCADE)
     def employee_first_name(self):
         return self.user.first_name

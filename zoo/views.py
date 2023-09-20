@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
@@ -56,6 +58,12 @@ def register(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         password = request.POST['password']
+        birth_date = request.POST['birth_date']
+
+        if datetime.now().date().year - datetime.strptime(birth_date, "%Y-%m-%d").year < 18:
+            error_message = "Пользователю должно быть больше 18 лет"
+            return render(request, 'register.html', {'error_message': error_message})
+
 
         if CustomUser.objects.filter(username=username).exists():
             messages.error(request, 'Пользователь с таким именем уже существует. Вам необходимо войти.')
@@ -66,7 +74,8 @@ def register(request):
             email=email,
             first_name=first_name,
             last_name=last_name,
-            password=password
+            password=password,
+            birth_date=birth_date
         )
 
         login(request, user)
