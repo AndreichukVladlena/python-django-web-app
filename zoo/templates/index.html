@@ -7,6 +7,10 @@
 {% endblock %}
 
 {% block content %}
+<h1>ЗооЧудо</h1>
+<h2>Последние новости</h2>
+<a href="{% url 'zoo:news_detail' news.id %}">{{news.title}}</a><br>
+<img src="{{news.image.url}}" alt="image" width="400">
 <ul>
 {% for animal in animals%}
 <li>

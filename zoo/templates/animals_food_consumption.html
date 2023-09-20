@@ -12,14 +12,22 @@
 
 {% if user.is_staff %}
        <form method="get">
+
+       <label for="date_input">Дата:</label>
+       <input type="date" id="date_input" name="selected_date">
+
         <select name="selected_animal_id">
             <option value="">Выберите животное</option>
             {% for animal in animals %}
             <option value="{{ animal.id }}">{{ animal.name }}</option>
             {% endfor %}
         </select>
+
         <input type="submit" value="Показать данные">
+
     </form>
+
+    <hr>
 
      <div id="animalData">
         {% if selected_animal %}
@@ -35,7 +43,7 @@
             {% endfor %}
         </ul>
          {% else %}
-         <p style="color: palevioletred;">Выберите животное</p>
+         <p style="color: palevioletred;">Выберите животное и дату</p>
          {% endif %}
     </div>
 {% else %}

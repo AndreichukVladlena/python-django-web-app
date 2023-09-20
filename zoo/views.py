@@ -10,11 +10,13 @@ from django.contrib.auth import logout
 
 def index(request):
     # Представление для отображения информации о зоопарке
+    news = News.objects.latest('publication_date')
     animals = Animal.objects.all()
     enclosures = Enclosure.objects.all()
     joke = requests.get('https://official-joke-api.appspot.com/jokes/random').json()
     cat = requests.get('https://catfact.ninja/fact').json()
     context = {
+        'news': news,
         'animals': animals,
         'enclosures': enclosures,
         'joke': joke,
@@ -134,20 +136,13 @@ def staff_enclosures(request):
 
 def animals_food_consumption(request):
     if request.user.is_staff:
-        # user = CustomUser.objects.get(pk=user_id)
-        # user_animals = Animal.objects.filter(user=user)
-        # food_consumptions = FoodConsumption.objects.filter(user_id=user_id)
-        # context = {
-        #     'user': user,
-        #     'animals': user_animals,
-        #     'food_consumptions': food_consumptions,
-        # }
-        # return render(request, 'animals_food_consumption.html', context)
         selected_animal_id = request.GET.get('selected_animal_id', None)
+        selected_date = request.GET.get('selected_date', None)
+        print(selected_date)
 
-        if selected_animal_id is not None:
+        if selected_animal_id != "" and selected_date != "":
             animal = Animal.objects.get(pk=selected_animal_id)
-            food_consumptions = FoodConsumption.objects.filter(animal=animal)
+            food_consumptions = FoodConsumption.objects.filter(animal=animal).filter(date=selected_date)
         else:
             animal = None
             food_consumptions = []
