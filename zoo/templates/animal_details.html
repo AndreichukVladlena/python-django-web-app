@@ -34,5 +34,10 @@
     </li>
     <li>Факты: {{animal.facts}}</li>
 
+    {% if user.is_superuser %}
+    <a href="{% url 'zoo:edit_animal' animal.id %}">Редактировать</a>
+    {% endif %}
+
+
 </ul>
 {% endblock %}

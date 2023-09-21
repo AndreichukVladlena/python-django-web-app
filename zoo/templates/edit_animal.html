@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+{{animal.name}}
+
+{% endblock %}
+
+{% block content %}
+
+<form method="post">
+    <label for="name_input">Имя: </label>
+    <input type="text" id="name_input" name="name" autocomplete="{{animal.name}}">
+
+    <select name="selected_specie_id">
+        {% for specie in species %}
+        <option value="{{ specie.id }}">{{ specie.name }}</option>
+        {% endfor %}
+    </select>
+
+    <select name="selected_class_id">
+        {% for class in classes %}
+        <option value="{{ class.id }}">{{ class.name }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="country_input">Страны обитания: </label>
+    {% for country in countries %}
+    <input type="checkbox" id="country_input" name="country" value="{{country}}">
+    {% endfor %}
+
+    <label for="facts_input">Факты: </label>
+    <input type="text" id="facts_input" name="facts" autocomplete="{{animal.facts}}">
+
+    <input type="submit" value="Изменить">
+</form>
+{% endblock %}

@@ -105,7 +105,7 @@ class Employee(models.Model):
         message='Format +375 (29) XXX-XX-XX',
     )])
     assigned_enclosure = models.ManyToManyField(Enclosure)
-    image = models.ImageField(upload_to='employees_photos/', default='media/unknown.png')
+    image = models.ImageField(upload_to='employees_photos/', default='unknown.png')
     position = models.OneToOneField(EmployeePosition, on_delete=models.CASCADE)
     def employee_first_name(self):
         return self.user.first_name

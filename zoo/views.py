@@ -27,18 +27,27 @@ def index(request):
     return render(request, 'index.html', context)
 
 def animals(request):
-    animals = Animal.objects.all()
+    animals = Animal.objects.all().order_by('name')
+    enclosures = Enclosure.objects.all()
     context = {
-        'animals': animals
+        'animals': animals,
+        'enclosures': enclosures
     }
     return render(request, 'animals.html', context)
 
 def enclosures(request):
-    enclosures = Enclosure.objects.all()
+    enclosures = Enclosure.objects.all().order_by('name')
     context = {
         'enclosures': enclosures
     }
     return render(request, 'enclosures.html', context)
+
+def employees(request):
+    employees = Employee.objects.all().order_by('user')
+    context = {
+        'employees': employees
+    }
+    return render(request, 'employees.html', context)
 
 def about(request):
     return render(request, 'about.html')
@@ -147,9 +156,8 @@ def animals_food_consumption(request):
     if request.user.is_staff:
         selected_animal_id = request.GET.get('selected_animal_id', None)
         selected_date = request.GET.get('selected_date', None)
-        print(selected_date)
 
-        if selected_animal_id != "" and selected_date != "":
+        if selected_animal_id is not None and selected_animal_id != "" and selected_date != "":
             animal = Animal.objects.get(pk=selected_animal_id)
             food_consumptions = FoodConsumption.objects.filter(animal=animal).filter(date=selected_date)
         else:
@@ -182,7 +190,19 @@ def news_detail(request, news_id):
     return render(request, 'news_detail.html', context)
 
 @staff_member_required
-def superuser_view(request):
-    # Представление, доступное только суперпользователю
+def edit_animal(request, animal_id):
+    try:
+        person = Animal.objects.get(id=animal_id)
+
+        if request.method == "POST":
+            person.name = request.POST.get("name")
+            person.age = request.POST.get("age")
+            person.save()
+            return HttpResponseRedirect("/")
+        else:
+            return render(request, "edit_animal.html", {"person": person})
+    except Person.DoesNotExist:
+        return HttpResponseNotFound("<h2>Person not found</h2>")
+
     return render(request, 'superuser_view.html')
 
