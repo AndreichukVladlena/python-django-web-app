@@ -11,14 +11,18 @@
 <img src="{{animal.photo.url}}" width="400">
 <ul>
 
+    {% if user.is_superuser %}
+    <a href="{% url 'zoo:edit_animal' animal.id %}">Редактировать</a>
+    {% endif %}
+
     <li>{{animal.name}}</li>
     <li>Вид: {{animal.species}}</li>
     <li>Класс: {{animal.animal_class}}</li>
     <li>Страна обитания:
         <ul>
         {% for habitat_country in animal.habitat_countries.all%}
-            <li>{{habitat_country}}</li>
-            <p>Описание: {{habitat_country.description}}</p>
+            <li>{{habitat_country}}: {{habitat_country.description}}</p></li>
+
         {% endfor %}
         </ul>
     </li>
@@ -26,18 +30,12 @@
     <li>Год рождения: {{animal.birth_year}}</li>
     <li>Что кушает:
     <ul>
-        {% for item in animal.food.all %}
-            <li>{{item}}</li>
+        {% for item in unique_foods.all %}
+            <li>{{item.name}}</li>
         <p>Состав: {{item.composition}}</p>
         {% endfor %}
     </ul>
     </li>
     <li>Факты: {{animal.facts}}</li>
-
-    {% if user.is_superuser %}
-    <a href="{% url 'zoo:edit_animal' animal.id %}">Редактировать</a>
-    {% endif %}
-
-
 </ul>
 {% endblock %}

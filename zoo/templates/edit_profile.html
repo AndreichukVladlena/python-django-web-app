@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+{{employee}}
+
+{% endblock %}
+
+{% block content %}
+
+ <table>
+    <tr><td>
+    <img src={{employee.image.url}} width="400">
+        </td>
+        <td>
+        <form method="post">
+        {% csrf_token %}
+            <p><b>Имя:</b> {{employee}}</p>
+
+    <label for="phone_number_input">Номер телефона: </label>
+    <input type="text" id="phone_number_input" name="phone_number" value="{{employee.phone_number}}" pattern="^\+375 \(29\) [0-9]{3}-[0-9]{2}-[0-9]{2}$"
+       title="Номер телефона должен иметь формат +375 (29) XXX-XX-XX"
+       required>
+     <br>
+    <select name="selected_position_id">
+        {% for position in positions %}
+        <option value="{{ position.id }}">{{ position }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="enclosures_input">Назначенные помещения: </label>
+    {% for enclosure in enclosures %}
+    <label for="enclosures_input"> {{ enclosure }} </label>
+    <input type="checkbox" id="enclosures_input" name="enclosures" value="{{enclosure.id}}"
+        {% if enclosure in employee_enclosures.all %}
+            checked
+        {% endif %}
+    >
+    {% endfor %}
+    <br>
+    <input type="submit" value="Изменить">
+        </form>
+        </td>
+    </tr>
+</table>
+
+{% endblock %}

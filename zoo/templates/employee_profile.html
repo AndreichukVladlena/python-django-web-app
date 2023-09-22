@@ -8,6 +8,7 @@
 
 {% block content %}
     <h1>Профиль сотрудника: {{ employee }}</h1>
+    <a href="{% url 'zoo:edit_profile' employee.id %}"> Изменить</a>
     <br>
     <table>
         <tr><td>

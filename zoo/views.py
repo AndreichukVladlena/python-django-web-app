@@ -2,8 +2,10 @@ from datetime import datetime
 
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
+from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
-from .models import Animal, Enclosure, Employee, CustomUser, FoodConsumption, News
+from .models import Animal, Enclosure, Employee, CustomUser, FoodConsumption, News, AnimalSpecies, AnimalClass, \
+    HabitatCountry, EmployeePosition, Food
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 import requests
@@ -55,8 +57,11 @@ def about(request):
 def animal_details(request, animal_id):
     # Представление для отображения детальной информации о животном
     animal = Animal.objects.get(pk=animal_id)
+    unique_foods = Food.objects.filter(animal=animal).values('name', 'composition').distinct()
+
     context = {
         'animal': animal,
+        'unique_foods': unique_foods,
     }
     return render(request, 'animal_details.html', context)
 
@@ -192,17 +197,57 @@ def news_detail(request, news_id):
 @staff_member_required
 def edit_animal(request, animal_id):
     try:
-        person = Animal.objects.get(id=animal_id)
-
+        animal = Animal.objects.get(id=animal_id)
+        animal_countries = animal.habitat_countries
+        species = AnimalSpecies.objects.all()
+        classes = AnimalClass.objects.all()
+        countries = HabitatCountry.objects.all()
+        context = {
+            'animal': animal,
+            'animal_countries': animal_countries,
+            'species': species,
+            'classes': classes,
+            'countries': countries,
+        }
         if request.method == "POST":
-            person.name = request.POST.get("name")
-            person.age = request.POST.get("age")
-            person.save()
-            return HttpResponseRedirect("/")
+            animal.species = AnimalSpecies.objects.get(id=request.POST.get("selected_specie_id"))
+            animal.classes = AnimalClass.objects.get(id=request.POST.get("selected_class_id"))
+            animal.habitat_countries.clear()
+            animal.habitat_countries.set(request.POST.getlist("country"))
+            animal.save()
+            return redirect('/animals')
         else:
-            return render(request, "edit_animal.html", {"person": person})
-    except Person.DoesNotExist:
+            return render(request, "edit_animal.html", context)
+    except Animal.DoesNotExist:
         return HttpResponseNotFound("<h2>Person not found</h2>")
 
-    return render(request, 'superuser_view.html')
+    return render(request, 'edit_animal.html')
 
+@staff_member_required
+def edit_profile(request, employee_id):
+    try:
+        employee = Employee.objects.get(id=employee_id)
+        employee_enclosures = employee.assigned_enclosure
+        enclosures = Enclosure.objects.all()
+        positions = EmployeePosition.objects.all()
+
+        context = {
+            'employee': employee,
+            'employee_enclosures': employee_enclosures,
+            'enclosures': enclosures,
+            'positions': positions,
+        }
+
+        if request.method == "POST":
+            employee.phone_number = request.POST.get("phone_number")
+            employee.assigned_enclosure.clear()
+            employee.assigned_enclosure.set(request.POST.getlist("enclosures"))
+            employee.position = EmployeePosition.objects.get(id=request.POST.get("selected_position_id"))
+            employee.save()
+            return redirect('/profile')
+        else:
+            return render(request, "edit_profile.html", context)
+    except Animal.DoesNotExist:
+        return HttpResponseNotFound("<h2>Person not found</h2>")
+
+    return render(request, 'edit_profile.html')

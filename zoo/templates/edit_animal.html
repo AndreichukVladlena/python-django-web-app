@@ -9,28 +9,32 @@
 {% block content %}
 
 <form method="post">
-    <label for="name_input">Имя: </label>
-    <input type="text" id="name_input" name="name" autocomplete="{{animal.name}}">
-
+    {% csrf_token %}
+    <p>Имя: {{animal.name}}</p>
+    <img src="{{animal.photo.url}}" width="400">
+    <br>
     <select name="selected_specie_id">
         {% for specie in species %}
         <option value="{{ specie.id }}">{{ specie.name }}</option>
         {% endfor %}
     </select>
-
+    <br>
     <select name="selected_class_id">
         {% for class in classes %}
         <option value="{{ class.id }}">{{ class.name }}</option>
         {% endfor %}
     </select>
-
+    <br>
     <label for="country_input">Страны обитания: </label>
     {% for country in countries %}
-    <input type="checkbox" id="country_input" name="country" value="{{country}}">
+    <label for="country_input"> {{country}} </label>
+    <input type="checkbox" id="country_input" name="country" value="{{country.id}}"
+        {% if country in animal_countries.all %}
+            checked
+        {% endif %}
+    >
     {% endfor %}
-
-    <label for="facts_input">Факты: </label>
-    <input type="text" id="facts_input" name="facts" autocomplete="{{animal.facts}}">
+    <br>
 
     <input type="submit" value="Изменить">
 </form>
