@@ -18,16 +18,21 @@
 <h2>Последние новости</h2>
 <a href="{% url 'zoo:news_detail' news.id %}">{{news.title}}</a><br>
 <img src="{{news.image.url}}" alt="image" width="400">
-<ul>
-{% for animal in animals%}
-<li>
-    <h2><a href="{% url 'zoo:animal_details' animal.id %}">{{animal.name}}</a></h2>
-    <img src="{{animal.photo.url}}" alt="image" width="400">
-    <br>
-    <p>{{animal.facts}}</p>
-</li>
-{% endfor %}
-</ul>
+
+<h2>Партнёры</h2>
+
+<table>
+    <tr>
+        <td><img src="media/zoobazar.png"></td>
+        <td><a href="https://zoobazar.by/">ZooBazar</a></td>
+
+        <td><img src="media/garfield.png"></td>
+        <td><a href="https://garfield.by">Garfield</a></td>
+
+        <td><img src="media/e-zoo.png"></td>
+        <td><a href="https://e-zoo.by/">E-zoo</a></td>
+    </tr>
+</table>
 
 {%if user.is_authenticated%}
 <h3> Joke 4u - {{joke.setup}} </h3>
