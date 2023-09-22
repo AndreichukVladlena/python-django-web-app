@@ -7,6 +7,15 @@
 {% endblock %}
 
 {% block content %}
+
+<div class="search-container">
+    <form method="GET">
+        <input type="text" name="q" placeholder="Поиск...">
+        <button type="submit">Поиск</button>
+    </form>
+</div>
+
+{% if animals %}
 <ul>
 {% for animal in animals%}
 <li>
@@ -17,5 +26,9 @@
 </li>
 {% endfor %}
 </ul>
+{% else %}
 
+<p>Ничего не найдено.</p>
+
+{% endif %}
 {% endblock %}

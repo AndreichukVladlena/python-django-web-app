@@ -8,6 +8,14 @@
 
 {% block content %}
 
+<div class="search-container">
+    <form method="GET">
+        <input type="text" name="q" placeholder="Поиск...">
+        <button type="submit">Поиск</button>
+    </form>
+</div>
+
+{% if news_list %}
     {% for news in news_list %}
     <div class="news">
         <h2>{{ news.title }}</h2>
@@ -15,5 +23,10 @@
         <img src="{{ news.image.url }}" alt="{{ news.title }}" width="400">
     </div>
     {% endfor %}
+{% else %}
+
+<p>Ничего не найдено.</p>
+
+{% endif %}
 
 {% endblock %}

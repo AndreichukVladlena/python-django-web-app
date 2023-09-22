@@ -8,11 +8,15 @@
 
 {% block content %}
 
+<div class="search-container">
+    <form method="GET">
+        <input type="text" name="q" placeholder="Поиск...">
+        <button type="submit">Поиск</button>
+    </form>
+</div>
 
+{% if enclosures %}
 <ul>
-
-
-
 {% for enclosure in enclosures %}
 <li>
    <img src="{{enclosure.photo.url}}">
@@ -20,8 +24,10 @@
    <a href="{% url 'zoo:enclosure_details' enclosure.id %}">{{enclosure.name}}</a>
 
 </li>
-
 {% endfor %}
-
 </ul>
+{% else %}
+<p>Ничего не найдено.</p>
+{% endif %}
+
 {% endblock %}

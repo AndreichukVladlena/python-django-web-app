@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
+from django.db.models import Q
 from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from .models import Animal, Enclosure, Employee, CustomUser, FoodConsumption, News, AnimalSpecies, AnimalClass, \
@@ -29,16 +30,25 @@ def index(request):
     return render(request, 'index.html', context)
 
 def animals(request):
+    query = request.GET.get('q')
     animals = Animal.objects.all().order_by('name')
-    enclosures = Enclosure.objects.all()
+
+    if query:
+        animals = animals.filter(Q(name__icontains=query) |
+            Q(facts__icontains=query))
+
     context = {
         'animals': animals,
-        'enclosures': enclosures
     }
     return render(request, 'animals.html', context)
 
 def enclosures(request):
+    query = request.GET.get('q')
     enclosures = Enclosure.objects.all().order_by('name')
+
+    if query:
+        enclosures = enclosures.filter(name__icontains=query)
+
     context = {
         'enclosures': enclosures
     }
@@ -46,6 +56,7 @@ def enclosures(request):
 
 def employees(request):
     employees = Employee.objects.all().order_by('user')
+
     context = {
         'employees': employees
     }
@@ -184,8 +195,17 @@ def animals_food_consumption(request):
         return render(request, 'animals_food_consumption.html', {'error_message': error_message})
 
 def news(request):
+    query = request.GET.get('q')
+
     news_list = News.objects.all()
-    return render(request, 'news_list.html', {'news_list': news_list})
+
+    if query:
+        news_list = news_list.filter(title__icontains=query)
+
+    context = {
+       'news_list': news_list,
+    }
+    return render(request, 'news_list.html', context)
 
 def news_detail(request, news_id):
     news = News.objects.get(pk=news_id)
