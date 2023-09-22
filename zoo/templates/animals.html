@@ -15,6 +15,17 @@
     </form>
 </div>
 
+<form method="post">
+    {% csrf_token %}
+    <select name="selected_enclosure_id">
+        <option value="all">Все помещения</option>
+        {% for enclosure in enclosures %}
+        <option value="{{ enclosure.id }}">{{ enclosure.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Сортировать</button>
+</form>
+
 {% if animals %}
 <ul>
 {% for animal in animals%}

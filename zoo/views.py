@@ -32,6 +32,12 @@ def index(request):
 def animals(request):
     query = request.GET.get('q')
     animals = Animal.objects.all().order_by('name')
+    enclosures = Enclosure.objects.all()
+
+    if request.method == "POST":
+        if request.POST.get("selected_enclosure_id")!="all":
+            enclosure = Enclosure.objects.get(id=request.POST.get("selected_enclosure_id"))
+            animals = enclosure.animals.all()
 
     if query:
         animals = animals.filter(Q(name__icontains=query) |
@@ -39,6 +45,7 @@ def animals(request):
 
     context = {
         'animals': animals,
+        'enclosures': enclosures,
     }
     return render(request, 'animals.html', context)
 
