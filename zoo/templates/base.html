@@ -9,15 +9,15 @@
 <body>
     <!-- Навигационное меню -->
     <nav>
+        <a href="/index"><img src="media/logo.jpeg" style="width: 3%">Главная</a>
+        <a href="/animals">Животные</a>
+        <a href="/enclosures">Их домики</a>
+        <a href="/employees">Сотрудники</a>
+        <a href="/news_list">Новости</a>
+        <a href="/about">О нас</a>
+
         <ul>
-            <li><a href="/index">Главная</a></li>
-            <li><a href="/animals">Животные</a></li>
-            <li><a href="/employees">Сотрудники</a></li>
-            <li><a href="/enclosures">Их домики</a></li>
-            <li><a href="/news_list">Новости</a></li>
-            <li><a href="/about">О нас</a></li>
             {% if user.is_authenticated %}
-            <br><br>
             <li><a href="/profile">Моя страница</a></li>
             {% endif %}
             {% if user.is_staff %}

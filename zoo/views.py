@@ -72,6 +72,14 @@ def employees(request):
 def about(request):
     return render(request, 'about.html')
 
+def politics(request):
+    return render(request, 'politics.html')
+
+def certificate(request):
+    return render(request, 'certificate.html')
+
+
+
 def animal_details(request, animal_id):
     # Представление для отображения детальной информации о животном
     animal = Animal.objects.get(pk=animal_id)

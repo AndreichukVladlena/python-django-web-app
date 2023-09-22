@@ -24,6 +24,8 @@ urlpatterns = [
 
     path('news_list', views.news, name='news'),
     path('news_detail/<int:news_id>', views.news_detail, name='news_detail'),
+    path('politics', views.politics, name='politics'),
+    path('certificate', views.certificate, name='certificate'),
 
     # Другие URL-маршруты для вашего приложения
 ]
