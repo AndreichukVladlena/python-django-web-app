@@ -35,6 +35,9 @@ class EmployeePositionAdmin(admin.ModelAdmin):
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'content', 'publication_date')
 
+class JobVacancyAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description')
+
 
 
 admin.site.register(Animal, AnimalAdmin)
@@ -49,3 +52,4 @@ admin.site.register(Enclosure, EnclosureAdmin)
 admin.site.register(Employee, EmployeeAdmin)
 
 admin.site.register(News, NewsAdmin)
+admin.site.register(JobVacancy, JobVacancyAdmin)

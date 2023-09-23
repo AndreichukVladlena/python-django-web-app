@@ -6,11 +6,12 @@ from django.db.models import Q
 from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from .models import Animal, Enclosure, Employee, CustomUser, FoodConsumption, News, AnimalSpecies, AnimalClass, \
-    HabitatCountry, EmployeePosition, Food
+    HabitatCountry, EmployeePosition, Food, JobVacancy
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 import requests
 from django.contrib.auth import logout
+from django.utils import timezone 
 
 
 def index(request):
@@ -18,6 +19,7 @@ def index(request):
     news = News.objects.latest('publication_date')
     animals = Animal.objects.all()
     enclosures = Enclosure.objects.all()
+
     joke = requests.get('https://official-joke-api.appspot.com/jokes/random').json()
     cat = requests.get('https://catfact.ninja/fact').json()
     context = {
@@ -286,3 +288,7 @@ def edit_profile(request, employee_id):
         return HttpResponseNotFound("<h2>Person not found</h2>")
 
     return render(request, 'edit_profile.html')
+
+def job_vacancies(request):
+    vacancies = JobVacancy.objects.all()
+    return render(request, 'job_vacancies.html', {'vacancies': vacancies})

@@ -124,3 +124,10 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+class JobVacancy(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title

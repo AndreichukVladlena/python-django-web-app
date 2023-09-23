@@ -26,6 +26,7 @@ urlpatterns = [
     path('news_detail/<int:news_id>', views.news_detail, name='news_detail'),
     path('politics', views.politics, name='politics'),
     path('certificate', views.certificate, name='certificate'),
+    path('job_vacancies', views.job_vacancies, name='job_vacancies'),
 
     # Другие URL-маршруты для вашего приложения
 ]

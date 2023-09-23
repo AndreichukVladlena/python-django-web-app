@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Вакансии зоопарка
+
+{% endblock %}
+
+{% block content %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Описание</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vacancy in vacancies %}
+            <tr>
+                <td><b>{{ vacancy }}</b></td>
+                <td>{{ vacancy.description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <dl>
+        <dt>Связаться с нами:</dt>
+        <dd>
+            <p>Адрес: ул. Зоопарк, 123</p>
+            <p>Телефон: +375 (29) 123-45-67</p>
+            <p>Email: <a href="mailto:info@zoo-chudo.com">info@zoo-chudo.com</a></p>
+        </dd>
+    </dl>
+
+{% endblock %}
+
