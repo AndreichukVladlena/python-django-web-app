@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from .models import Animal, Enclosure, Employee, CustomUser, FoodConsumption, News, AnimalSpecies, AnimalClass, \
-    HabitatCountry, EmployeePosition, Food, JobVacancy, FAQ, Reviews
+    HabitatCountry, EmployeePosition, Food, JobVacancy, FAQ, Reviews, Coupon
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 import requests
@@ -334,3 +334,10 @@ def add_review(request):
         return redirect('/reviews')  # Перенаправляем на страницу отзывов после отправки.
 
     return render(request, 'add_review.html')
+
+def coupons(request):
+    coupons = Coupon.objects.all()
+    context = {
+        'coupons': coupons,
+    }
+    return render(request, "coupons.html", context)

@@ -31,6 +31,9 @@ urlpatterns = [
     path('add_question', views.add_question, name='add_question'),
     path('reviews', views.reviews, name='reviews'),
     path('add_review', views.add_review, name='add_review'),
+    path('coupons', views.coupons, name='coupons'),
+
+
 
 
     # Другие URL-маршруты для вашего приложения
