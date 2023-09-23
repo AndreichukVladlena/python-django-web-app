@@ -131,3 +131,12 @@ class JobVacancy(models.Model):
 
     def __str__(self):
         return self.title
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+    publication_date = models.DateField()
+
+
+    def __str__(self):
+        return self.question

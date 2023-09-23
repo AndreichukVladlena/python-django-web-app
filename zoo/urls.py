@@ -27,6 +27,8 @@ urlpatterns = [
     path('politics', views.politics, name='politics'),
     path('certificate', views.certificate, name='certificate'),
     path('job_vacancies', views.job_vacancies, name='job_vacancies'),
+    path('faq', views.faq, name='faq'),
+    path('add_question', views.add_question, name='add_question'),
 
     # Другие URL-маршруты для вашего приложения
 ]

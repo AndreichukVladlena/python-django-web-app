@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Задать вопрос
+
+{% endblock %}
+
+{% block content %}
+
+ <h1>Задать вопрос</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="question">Вопрос:</label>
+        <input type="text" id="question" name="question" required>
+        <br>
+        <button type="submit">Добавить вопрос</button>
+    </form>
+
+{% endblock %}

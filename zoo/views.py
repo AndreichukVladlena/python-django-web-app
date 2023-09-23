@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from .models import Animal, Enclosure, Employee, CustomUser, FoodConsumption, News, AnimalSpecies, AnimalClass, \
-    HabitatCountry, EmployeePosition, Food, JobVacancy
+    HabitatCountry, EmployeePosition, Food, JobVacancy, FAQ
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 import requests
@@ -292,3 +292,25 @@ def edit_profile(request, employee_id):
 def job_vacancies(request):
     vacancies = JobVacancy.objects.all()
     return render(request, 'job_vacancies.html', {'vacancies': vacancies})
+
+def faq(request):
+    faqs = FAQ.objects.all().order_by('publication_date')
+
+    context = {
+        'faqs': faqs
+    }
+    return render(request, 'faq.html', context)
+
+@login_required
+def add_question(request):
+    if request.method == 'POST':
+        question_text = request.POST['question']
+        publication_date = timezone.now().date()
+
+        # Создаем новую запись FAQ без ответа
+        FAQ.objects.create(question=question_text, answer="Ответ ожидается", publication_date=publication_date)
+
+        # Перенаправляем пользователя на страницу FAQ
+        return redirect('/faq')
+    else:
+        return render(request, 'add_question.html')

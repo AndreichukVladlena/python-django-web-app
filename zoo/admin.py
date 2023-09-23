@@ -38,6 +38,9 @@ class NewsAdmin(admin.ModelAdmin):
 class JobVacancyAdmin(admin.ModelAdmin):
     list_display = ('title', 'description')
 
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ('question', 'answer', 'publication_date')
+
 
 
 admin.site.register(Animal, AnimalAdmin)
@@ -53,3 +56,4 @@ admin.site.register(Employee, EmployeeAdmin)
 
 admin.site.register(News, NewsAdmin)
 admin.site.register(JobVacancy, JobVacancyAdmin)
+admin.site.register(FAQ, FAQAdmin)
