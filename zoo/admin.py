@@ -44,6 +44,9 @@ class FAQAdmin(admin.ModelAdmin):
 class ReviewsAdmin(admin.ModelAdmin):
     list_display = ('user', 'description', 'grade')
 
+class CouponAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'expiration_date', 'image')
+
 
 
 admin.site.register(Animal, AnimalAdmin)
@@ -61,3 +64,4 @@ admin.site.register(News, NewsAdmin)
 admin.site.register(JobVacancy, JobVacancyAdmin)
 admin.site.register(FAQ, FAQAdmin)
 admin.site.register(Reviews, ReviewsAdmin)
+admin.site.register(Coupon,CouponAdmin)

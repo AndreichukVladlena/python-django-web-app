@@ -149,3 +149,12 @@ class Reviews(models.Model):
             MaxValueValidator(5)
         ],
         default=1)
+
+class Coupon(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Название купона')
+    description = models.TextField(blank=True, null=True, verbose_name='Описание')
+    expiration_date = models.DateField(verbose_name='Срок действия')
+    image = models.ImageField(upload_to='coupons/', verbose_name='Изображение', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
