@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from .models import Animal, Enclosure, Employee, CustomUser, FoodConsumption, News, AnimalSpecies, AnimalClass, \
-    HabitatCountry, EmployeePosition, Food, JobVacancy, FAQ
+    HabitatCountry, EmployeePosition, Food, JobVacancy, FAQ, Reviews
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 import requests
@@ -314,3 +314,23 @@ def add_question(request):
         return redirect('/faq')
     else:
         return render(request, 'add_question.html')
+
+def reviews(request):
+    reviews = Reviews.objects.all()
+    context = {
+        'reviews': reviews,
+    }
+    return render(request, 'reviews.html', context)
+
+@login_required
+def add_review(request):
+    if request.method == 'POST':
+        description = request.POST['description']
+        grade = int(request.POST['grade'])
+        user = request.user  # Здесь мы используем текущего пользователя из сессии.
+
+        review = Reviews(user=user, description=description, grade=grade)
+        review.save()
+        return redirect('/reviews')  # Перенаправляем на страницу отзывов после отправки.
+
+    return render(request, 'add_review.html')

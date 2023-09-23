@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Добавить отзыв
+
+{% endblock %}
+
+{% block content %}
+<h1>Добавить отзыв</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="description">Отзыв:</label>
+        <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="grade">Оценка (от 1 до 5):</label>
+        <input type="number" class="form-control" id="grade" name="grade" min="1" max="5" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+</form>
+{% endblock %}

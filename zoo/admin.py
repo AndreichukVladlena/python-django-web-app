@@ -41,6 +41,9 @@ class JobVacancyAdmin(admin.ModelAdmin):
 class FAQAdmin(admin.ModelAdmin):
     list_display = ('question', 'answer', 'publication_date')
 
+class ReviewsAdmin(admin.ModelAdmin):
+    list_display = ('user', 'description', 'grade')
+
 
 
 admin.site.register(Animal, AnimalAdmin)
@@ -57,3 +60,4 @@ admin.site.register(Employee, EmployeeAdmin)
 admin.site.register(News, NewsAdmin)
 admin.site.register(JobVacancy, JobVacancyAdmin)
 admin.site.register(FAQ, FAQAdmin)
+admin.site.register(Reviews, ReviewsAdmin)

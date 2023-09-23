@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, MinValueValidator, MaxValueValidator
 from django.db import models
 from django.urls import reverse
 from datetime import datetime
@@ -43,7 +43,7 @@ class CustomUser(AbstractUser):
     birth_date = models.DateField(default=datetime(2004, 6, 27))
 
     def __str__(self):
-        return f'{self.first_name}, {self.last_name}'
+        return f'{self.first_name} {self.last_name}'
 
 class Animal(models.Model):
     user = models.ManyToManyField(CustomUser)
@@ -140,3 +140,12 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+
+class Reviews(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
+    description = models.TextField()
+    grade = models.IntegerField(validators=[
+            MinValueValidator(1),
+            MaxValueValidator(5)
+        ],
+        default=1)
