@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Листинг кода
+
+{% endblock %}
+
+{% block content %}
+<h1> Листинг кода (Admin Page)</h1>
+
+    <h2>AnimalAdmin</h2>
+    <code>
+class AnimalAdmin(admin.ModelAdmin):
+    list_display = ('name', 'entry_date', 'birth_year', 'photo', 'facts')
+    </code>
+
+    <h2>FoodAdmin</h2>
+    <code>
+class FoodAdmin(admin.ModelAdmin):
+    list_display = ('name', 'composition')
+    </code>
+
+    <h2>FoodConsumptionAdmin</h2>
+    <code>
+class FoodConsumptionAdmin(admin.ModelAdmin):
+    list_display = ('user', 'animal', 'food', 'date', 'daily_amount')
+    </code>
+
+    <h2>EmployeeAdmin</h2>
+    <code>
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display = ('employee_first_name', 'employee_last_name', 'phone_number', 'position')
+    </code>
+
+    <h2>EnclosureAdmin</h2>
+    <code>
+class EnclosureAdmin(admin.ModelAdmin):
+    list_display = ('number', 'name', 'has_water', 'area', 'heating')
+    </code>
+
+    <h2>CustomUserAdmin</h2>
+    <code>
+class CustomUserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'password', 'birth_date')
+    </code>
+
+    <h2>AnimalSpeciesAdmin</h2>
+    <code>
+class AnimalSpeciesAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description')
+    </code>
+
+    <h2>AnimalClassAdmin</h2>
+    <code>
+class AnimalClassAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description')
+    </code>
+
+    <h2>HabitatCountryAdmin</h2>
+    <code>
+class HabitatCountryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description')
+    </code>
+
+    <h2>EmployeePositionAdmin</h2>
+    <code>
+class EmployeePositionAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description')
+    </code>
+
+    <h2>NewsAdmin</h2>
+    <code>
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'content', 'publication_date')
+    </code>
+
+    <h2>JobVacancyAdmin</h2>
+    <code>
+class JobVacancyAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description')
+    </code>
+
+    <h2>FAQAdmin</h2>
+    <code>
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ('question', 'answer', 'publication_date')
+    </code>
+
+    <h2>ReviewsAdmin</h2>
+    <code>
+class ReviewsAdmin(admin.ModelAdmin):
+    list_display = ('user', 'description', 'grade')
+    </code>
+
+    <h2>CouponAdmin</h2>
+    <code>
+class CouponAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'expiration_date', 'image')
+    </code>
+
+{% endblock %}

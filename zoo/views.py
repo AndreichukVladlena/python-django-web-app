@@ -341,3 +341,6 @@ def coupons(request):
         'coupons': coupons,
     }
     return render(request, "coupons.html", context)
+
+def listing(request):
+    return render(request, "listing.html")
