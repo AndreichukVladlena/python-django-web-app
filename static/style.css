@@ -1,0 +1,24 @@
+/* Посещенные ссылки */
+a:visited {
+    color: purple;
+}
+
+/* Не посещенные ссылки */
+a:not(:visited) {
+    color: blue;
+}
+
+/* При наведении курсора */
+a:hover {
+    text-decoration: underline;
+}
+
+/* Нажатые ссылки */
+a:active {
+    color: red;
+}
+
+/* Элементы в фокусе */
+:focus {
+    outline: 2px solid orange;
+}
