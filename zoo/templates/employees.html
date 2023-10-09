@@ -11,7 +11,7 @@
 {% for employee in employees%}
  <table>
         <tr><td>
-    <img src={{employee.image.url}} width="300">
+    <img src={{employee.image.url}}>
         </td>
             <td>
     <a href="{% url 'zoo:edit_profile' employee.id %}"> Изменить</a>

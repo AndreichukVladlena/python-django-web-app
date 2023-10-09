@@ -8,20 +8,22 @@
 
 {% block content %}
 <h1> Купоны и промокоды </h1>
+    <div class="coupons">
     <table>
         <tbody>
             {% for coupon in coupons %}
             <tr>
-                <td><img src="{{ coupon.image.url }}" alt="image" width="400"></td>
+                <td><img src="{{ coupon.image.url }}" alt="image"></td>
 
                 <td>
-                    <p><b>Название:</b> {{coupon}}</p>
-                    <p><b>Описание:</b>  {{ coupon.description }}</p>
-                    <p><b>Срок действия до</b>  {{ coupon.expiration_date }}</p>
+                    <p><span>Название:</span> {{coupon}}</p>
+                    <p><span>Описание:</span> {{ coupon.description }}</p>
+                    <p><span>Срок действия до</span> <span class="date">{{ coupon.expiration_date }}</span></p>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    </div>
 
 {% endblock %}

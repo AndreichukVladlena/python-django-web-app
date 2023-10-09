@@ -7,7 +7,8 @@
 {% endblock %}
 
 {% block content %}
-    <table border="1">
+<div class="vacancies">
+    <table>
         <thead>
             <tr>
                 <th>Название</th>
@@ -17,12 +18,13 @@
         <tbody>
             {% for vacancy in vacancies %}
             <tr>
-                <td><b>{{ vacancy }}</b></td>
+                <td>{{ vacancy }}</td>
                 <td>{{ vacancy.description }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
 
     <dl>
         <dt>Связаться с нами:</dt>

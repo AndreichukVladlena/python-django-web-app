@@ -7,19 +7,20 @@
 {% endblock %}
 
 {% block content %}
+<div class="employee_profile">
     <h1>Профиль сотрудника: {{ employee }}</h1>
     <a href="{% url 'zoo:edit_profile' employee.id %}"> Изменить</a>
     <br>
     <table>
         <tr><td>
-    <img src={{employee.image.url}} width="400">
+    <img src={{employee.image.url}}>
         </td>
             <td>
-    <p><b>Номер телефона:</b> {{ employee.phone_number }}</p>
-    <p><b>Должность:</b> {{ employee.position }}</p>
-    <p><b>Описание обязанностей:</b> {{ employee.position.description }}</p>
+                <p><span class="name_field">Номер телефона:</span> {{ employee.phone_number }}</p>
+                <p><span class="name_field">Должность:</span> {{ employee.position }}</p>
+                <p><span class="name_field">Описание обязанностей:</span> {{ employee.position.description }}</p>
 
-    <p><b>Назначенные помещения:</b></p>
+                <p><span class="name_field">Назначенные помещения:</span></p>
     <ul>
         {% for enclosure in assigned_enclosure %}
             <li><a href="{% url 'zoo:enclosure_details' enclosure.id %}">{{enclosure.name}}({{enclosure.number}})</a></li>
@@ -28,4 +29,5 @@
             </td>
         </tr>
     </table>
+</div>
 {% endblock %}

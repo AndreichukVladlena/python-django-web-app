@@ -12,19 +12,20 @@
 
 {% block content %}
 
-<div class="ad-banner" style="display: flex; justify-content: center; align-items: center;">
+<div class="ad-banner">
     <a href="https://goldapple.ru/" target="_blank">
-        <img src="media/zya.png" alt="Реклама" style="width: 50%; object-fit: cover;">
+        <img src="media/zya.png" alt="Реклама">
     </a>
 </div>
 
 <h1>ЗооЧудо</h1>
 <h2>Последние новости</h2>
 <a href="{% url 'zoo:news_detail' news.id %}">{{news.title}}</a><br>
-<img src="{{news.image.url}}" alt="image" width="400">
+<img src="{{news.image.url}}" alt="image">
 
 <h2>Партнёры</h2>
 
+<div class="partners">
 <table>
     <tr>
         <td><img src="media/zoobazar.png"></td>
@@ -37,6 +38,7 @@
         <td><a href="https://e-zoo.by/">E-zoo</a></td>
     </tr>
 </table>
+</div>
 
 {%if user.is_authenticated%}
 <h3> Joke 4u - {{joke.setup}} </h3>

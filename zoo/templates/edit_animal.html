@@ -11,7 +11,7 @@
 <form method="post">
     {% csrf_token %}
     <p>Имя: {{animal.name}}</p>
-    <img src="{{animal.photo.url}}" width="400">
+    <img src="{{animal.photo.url}}">
     <br>
     <select name="selected_specie_id">
         {% for specie in species %}

@@ -1,3 +1,153 @@
+video {
+    width: 100%;
+}
+
+img {
+    width: 400px;
+}
+
+.logo-link img {
+    width: 3%;
+}
+
+.certificate {
+    width: 40%;
+     margin: 0 auto; /* Автоматически центрирует контейнер по горизонтали */
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* vh - видимая часть страницы */
+}
+
+.certificate h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.certificate h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.certificate p {
+    font-size: 14px;
+    text-align: left;
+}
+
+.certificate span {
+    float: right;
+}
+
+.certificate a {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.certificate a:hover {
+    text-decoration: underline;
+}
+
+/* Общие стили для контейнера с купонами */
+.coupons {
+    width: 90%; /* Ширина контейнера */
+    margin: 0 auto; /* Центрирование контейнера по горизонтали */
+    padding: 20px; /* Поля вокруг контейнера */
+    font-style: normal;
+}
+
+.coupons span{
+    font-weight: bold;
+}
+
+.coupons td img {
+    max-width: 100px; /* Максимальная ширина изображения */
+    padding-right: 20px;
+}
+
+.coupons td {
+    padding-left: 20px; /* Отступ слева для текстовой информации */
+    outline: 3px solid darkgreen;
+}
+
+.coupons .date {
+    color: darkgreen;
+    text-decoration: underline;
+}
+
+.ad-banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ad-banner img{
+    width: 100%;
+    margin: 0 auto; /* Автоматически центрирует контейнер по горизонтали */
+    display: flex;
+    height: 30vh; /* vh - видимая часть страницы */
+}
+
+.partners{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.partners table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.partners img{
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+}
+
+.vacancies{
+    padding: 20px;
+}
+
+.vacancies table{
+    height: 50vh;
+}
+
+.vacancies th{
+   outline: 2px solid darkgreen;
+}
+
+.vacancies td{
+    padding-right: 20px;
+    padding-left: 20px;
+    outline: 2px solid darkgreen;
+}
+
+.vacancies tr td:first-child{
+    font-weight: bold;
+    color: darkgreen;
+}
+
+.error p{
+    color: red;
+    font-weight: bold;
+}
+
+.name_field {
+    font-weight: bold;
+    color:darkgreen;
+}
+
+.employee_profile tr:last-child td:last-child{
+    font-style: normal;
+}
+
+.user_profile tr:last-child td:last-child{
+    font-style: normal;
+}
+
 /* Посещенные ссылки */
 a:visited {
     color: dimgray;
@@ -21,4 +171,34 @@ a:active {
 /* Элементы в фокусе */
 :focus {
     outline: 2px solid orange;
+}
+
+/* Первый элемент в списке */
+ul li:first-child {
+    font-weight: bold;
+}
+
+/* Последний элемент в списке */
+ul li:last-child {
+    font-style: italic;
+}
+
+/* n-й элемент в списке (например, третий элемент) */
+ul li:nth-child(3) {
+    color: darkgreen;
+}
+
+/* Первая ячейка в таблице */
+table tr:first-child td:first-child {
+    font-weight: bold;
+}
+
+/* Последняя ячейка в таблице */
+table tr:last-child td:last-child {
+    font-style: italic;
+}
+
+/* n-я ячейка в таблице (например, вторая ячейка во второй строке) */
+table tr:nth-child(2) td:nth-child(2) {
+    background-color: yellow;
 }

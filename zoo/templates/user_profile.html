@@ -7,11 +7,12 @@
 {% endblock %}
 
 {% block content %}
+<div class="user_profile">
     <h1>Профиль пользователя</h1>
-    <p><strong>Имя пользователя:</strong> {{ user.username }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>Имя:</strong> {{ user.first_name }}</p>
-    <p><strong>Фамилия:</strong> {{ user.last_name }}</p>
-    <p><strong>Дата рождения:</strong> {{ user.birth_date }}</p>
-
+    <p><span class="name_field">Имя пользователя:</span> {{ user.username }}</p>
+    <p><span class="name_field">Email:</span> {{ user.email }}</p>
+    <p><span class="name_field">Имя:</span> {{ user.first_name }}</p>
+    <p><span class="name_field">Фамилия:</span> {{ user.last_name }}</p>
+    <p><span class="name_field">Дата рождения:</span> {{ user.birth_date }}</p>
+</div>
 {% endblock %}

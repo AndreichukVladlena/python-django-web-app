@@ -11,7 +11,7 @@
 <body>
     <!-- Навигационное меню -->
     <nav>
-        <a href="/index"><img src="media/logo.jpeg" style="width: 3%">Главная</a>
+        <a href="/index" class="logo-link"><img src="media/logo.jpeg">Главная</a>
         <a href="/animals">Животные</a>
         <a href="/enclosures">Их домики</a>
         <a href="/employees">Сотрудники</a>
@@ -31,13 +31,12 @@
             {% endif %}
         </ul>
         {% if user.is_authenticated %}
-            <li><button style="color:palevioletred;" onclick="location.href='/logout_view'">Выйти</button></li>
+            <li><button onclick="location.href='/logout_view'">Выйти</button></li>
         {% else %}
-            <li><button style="color:palevioletred;" onclick="location.href='/login_view'">Войти</button></li>
-            <li><button style="color:palevioletred;" onclick="location.href='/register'">Зарегистрироваться</button></li>
+            <li><button onclick="location.href='/login_view'">Войти</button></li>
+            <li><button onclick="location.href='/register'">Зарегистрироваться</button></li>
         {% endif %}
     </nav>
-
 
     <!-- Блок контента -->
     <div class="content">
