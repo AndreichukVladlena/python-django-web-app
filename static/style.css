@@ -1,16 +1,16 @@
 /* Посещенные ссылки */
 a:visited {
-    color: purple;
+    color: dimgray;
 }
 
 /* Не посещенные ссылки */
 a:not(:visited) {
-    color: blue;
+    color: darkgreen;
 }
 
 /* При наведении курсора */
 a:hover {
-    text-decoration: underline;
+    text-decoration: overline darkgreen;
 }
 
 /* Нажатые ссылки */
