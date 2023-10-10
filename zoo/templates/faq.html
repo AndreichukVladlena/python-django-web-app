@@ -15,7 +15,7 @@
 {%endif%}
 
 {% for faq in faqs %}
-<p>{{faq}} {{faq.publication_date}}</p>
+<p><span class="bold">{{faq}}</span> {{faq.publication_date}}</p>
 <p>{{faq.answer}}</p>
 <hr>
 {% endfor %}

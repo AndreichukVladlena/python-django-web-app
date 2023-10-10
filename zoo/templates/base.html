@@ -11,15 +11,19 @@
 <body>
     <!-- Навигационное меню -->
     <nav>
-        <a href="/index" class="logo-link"><img src="media/logo.jpeg">Главная</a>
-        <a href="/animals">Животные</a>
-        <a href="/enclosures">Их домики</a>
-        <a href="/employees">Сотрудники</a>
-        <a href="/news_list">Новости</a>
-        <a href="/job_vacancies">Вакансии зоопарка</a>
-        <a href="/coupons">Купоны</a>
-        <a href="/reviews">Отзывы</a>
-        <a href="/about">О нас</a>
+        <div class="horizontal-nav">
+
+        <a href="/index" class="nav-link">Главная</a>
+        <a href="/animals" class="nav-link">Животные</a>
+        <a href="/enclosures" class="nav-link">Их домики</a>
+        <a href="/employees" class="nav-link">Сотрудники</a>
+        <a href="/news_list" class="nav-link">Новости</a>
+        <a href="/job_vacancies" class="nav-link">Вакансии зоопарка</a>
+        <a href="/coupons" class="nav-link">Купоны</a>
+        <a href="/reviews" class="nav-link">Отзывы</a>
+        <a href="/about" class="nav-link">О нас</a>
+
+        </div>
 
         <ul>
             {% if user.is_authenticated %}
@@ -44,9 +48,12 @@
     </div>
 
     <!-- Подвал -->
+
+    <div class="horizontal-footer">
     <footer>
         &copy; {% now "Y-m-d H:i:s" %} ЗооЧудо
     </footer>
+    </div>
 
 </body>
 </html>

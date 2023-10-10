@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}
 
 Главная страница
@@ -9,8 +11,11 @@
 <meta name="description" content="Зоопарк Зоочудо, животные, вольеры">
 <meta name="keywords" content="животные, вольеры, вакансии, тигр, обезьяна, развлечение">
 
-
 {% block content %}
+
+<div class="company-name">
+    <h1>ЗооЧудо</h1>
+</div>
 
 <div class="ad-banner">
     <a href="https://goldapple.ru/" target="_blank">
@@ -18,7 +23,6 @@
     </a>
 </div>
 
-<h1>ЗооЧудо</h1>
 <h2>Последние новости</h2>
 <a href="{% url 'zoo:news_detail' news.id %}">{{news.title}}</a><br>
 <img src="{{news.image.url}}" alt="image">

@@ -1,0 +1,29 @@
+
+.ad-banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ad-banner img{
+    width: 100%;
+    margin: 0 auto; /* Автоматически центрирует контейнер по горизонтали */
+    display: flex;
+    height: 30vh;
+}
+
+.partners{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.partners table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.partners img{
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+}

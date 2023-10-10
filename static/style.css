@@ -1,3 +1,24 @@
+.color1 { color: #ff93d9; }
+.color2 { color: #ffcf9a; }
+.color3 { color: #3f0b0f; }
+.color4 { color: #90827b; }
+.color5 { color: #fffaf2; }
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+body{
+    font: 20px 'Montserrat', Arial, sans-serif;
+    text-color: #3f0b0f;
+    margin: 0;
+	padding-top: 100px;
+}
+
+/*Выделенный текст*/
+::selection {
+    background-color: #ff93d9;
+    color: #fffaf2;
+}
+
+
 video {
     width: 100%;
 }
@@ -7,7 +28,96 @@ img {
 }
 
 .logo-link img {
-    width: 3%;
+    width: 10%;
+}
+
+[class^="horizontal"] {
+    display: flex;
+    width: 100%;
+    color: #fffaf2;;
+    justify-content: space-between; /* Равномерное распределение между элементами */
+    align-items: center; /* Выравнивание элементов по центру */
+    background-color: #3f0b0f;
+    padding: 40px 30px; /* Отступы вокруг ссылок */
+}
+
+.horizontal-nav{
+    position: fixed;
+    width:100vw;
+    top: 0px;
+}
+
+.horizontal-nav a{
+    color: #fffaf2;
+    display: inline-block;
+}
+
+.company-name{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+h1{
+    font-size: 91px;
+    font-weight: 500;
+    letter-spacing: 1px; /* Расстояние между символами */
+}
+
+h2 {
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 400;
+}
+h3 {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.25em;
+  margin: 0.5em 0;
+}
+
+h3 + p {
+  margin-top: 0;
+}
+
+.ad-banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ad-banner img{
+    width: 100%;
+    margin: 0 auto; /* Автоматически центрирует контейнер по горизонтали */
+    display: flex;
+    height: 30vh;
+}
+
+/* Стили для контейнера partners */
+.partners {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+/* Стили для каждой компании-партнёра */
+.partners td img{
+    text-align: center;
+    padding: 20px;
+    border-radius: 50%; /* Превращаем ячейку в круг */
+    width: 150px; /* Ширина ячейки */
+    height: 150px; /* Высота ячейки */
+    background-color: white; /* Цвет фона */
+    box-shadow: 80px 80px 80px rgba(0, 0, 0, 0.1); /* Тень ячейки */
+    margin: 10px; /* Внешние отступы между ячейками */
+}
+
+/* Стили для ссылок внутри ячеек */
+.partners td a {
+    color: black; /* Цвет текста */
+    text-decoration: none;
 }
 
 .certificate {
@@ -15,7 +125,7 @@ img {
      margin: 0 auto; /* Автоматически центрирует контейнер по горизонтали */
     display: flex;
     flex-direction: column;
-    height: 100vh; /* vh - видимая часть страницы */
+    height: 100vh;
 }
 
 .certificate h1 {
@@ -78,35 +188,6 @@ img {
     text-decoration: underline;
 }
 
-.ad-banner{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ad-banner img{
-    width: 100%;
-    margin: 0 auto; /* Автоматически центрирует контейнер по горизонтали */
-    display: flex;
-    height: 30vh; /* vh - видимая часть страницы */
-}
-
-.partners{
-    width: 80%;
-    margin: 0 auto;
-}
-
-.partners table{
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.partners img{
-    width: 30%;
-    display: block;
-    margin: 0 auto;
-}
-
 .vacancies{
     padding: 20px;
 }
@@ -148,29 +229,42 @@ img {
     font-style: normal;
 }
 
+
+.history li {
+    list-style: none;
+    padding-left: 0; /* Убираем отступ слева для списка */
+}
+
+.history li:before {
+    content: '\2015'; /* Символ маркера Unicode */
+    color: #3f0b0f;
+}
+
 /* Посещенные ссылки */
 a:visited {
-    color: dimgray;
+    color: #90827b;
+    text-decoration: none;
 }
 
 /* Не посещенные ссылки */
 a:not(:visited) {
-    color: darkgreen;
+    color: #3f0b0f;
+    text-decoration: none;
 }
 
 /* При наведении курсора */
 a:hover {
-    text-decoration: overline darkgreen;
+    text-decoration: overline #ff93d9;
 }
 
 /* Нажатые ссылки */
 a:active {
-    color: red;
+    color: #ffcf9a;
 }
 
 /* Элементы в фокусе */
 :focus {
-    outline: 2px solid orange;
+    outline: 1px solid #ffcf9a;
 }
 
 /* Первый элемент в списке */
@@ -185,7 +279,7 @@ ul li:last-child {
 
 /* n-й элемент в списке (например, третий элемент) */
 ul li:nth-child(3) {
-    color: darkgreen;
+    color: #ff93d9;
 }
 
 /* Первая ячейка в таблице */
@@ -200,5 +294,9 @@ table tr:last-child td:last-child {
 
 /* n-я ячейка в таблице (например, вторая ячейка во второй строке) */
 table tr:nth-child(2) td:nth-child(2) {
-    background-color: yellow;
+    background-color: #ff93d9;
+}
+
+.bold{
+    font-weight: bold;
 }
