@@ -14,7 +14,7 @@
 {% block content %}
 
 <div class="company-name">
-    <h1>ЗооЧудо</h1>
+    <h1><img src="media/logo.png" alt="logo image">ЗооЧудо</h1>
 </div>
 
 <div class="ad-banner">
@@ -23,13 +23,16 @@
     </a>
 </div>
 
+<div class="news-index">
 <h2>Последние новости</h2>
-<a href="{% url 'zoo:news_detail' news.id %}">{{news.title}}</a><br>
+    <h3><a href="{% url 'zoo:news_detail' news.id %}">{{news.title}}</a></h3><br>
 <img src="{{news.image.url}}" alt="image">
+</div>
 
-<h2>Партнёры</h2>
+    <h2 class="margin">Партнёры</h2>
 
 <div class="partners">
+
 <table>
     <tr>
         <td><img src="media/zoobazar.png"></td>

@@ -4,28 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="icon" href="media/logo.jpeg" type="media/logo.jpeg">
+    <link rel="icon" href="media/logo.png" type="media/logo.jpeg">
+
     <title>{% block title %}ЗооЧудо{% endblock %}</title>
 </head>
 <body>
     <!-- Навигационное меню -->
     <nav>
         <div class="horizontal-nav">
-
-        <a href="/index" class="nav-link">Главная</a>
-        <a href="/animals" class="nav-link">Животные</a>
-        <a href="/enclosures" class="nav-link">Их домики</a>
-        <a href="/employees" class="nav-link">Сотрудники</a>
-        <a href="/news_list" class="nav-link">Новости</a>
-        <a href="/job_vacancies" class="nav-link">Вакансии зоопарка</a>
-        <a href="/coupons" class="nav-link">Купоны</a>
-        <a href="/reviews" class="nav-link">Отзывы</a>
-        <a href="/about" class="nav-link">О нас</a>
-
-        </div>
-
+        <span class="icon">&#9776;</span>
+        <div class="side-menu">
         <ul>
+            <li><div class="hide-menu">&#10094; Скрыть</div>
             {% if user.is_authenticated %}
             <li><a href="/profile">Моя страница</a></li>
             {% endif %}
@@ -40,6 +35,19 @@
             <li><button onclick="location.href='/login_view'">Войти</button></li>
             <li><button onclick="location.href='/register'">Зарегистрироваться</button></li>
         {% endif %}
+        </div>
+
+        <a href="/index" class="nav-link">Главная</a>
+        <a href="/animals" class="nav-link">Животные</a>
+        <a href="/enclosures" class="nav-link">Их домики</a>
+        <a href="/employees" class="nav-link">Сотрудники</a>
+        <a href="/news_list" class="nav-link">Новости</a>
+        <a href="/job_vacancies" class="nav-link">Вакансии зоопарка</a>
+        <a href="/coupons" class="nav-link">Купоны</a>
+        <a href="/reviews" class="nav-link">Отзывы</a>
+        <a href="/about" class="nav-link">О нас</a>
+
+        </div>
     </nav>
 
     <!-- Блок контента -->
@@ -54,6 +62,15 @@
         &copy; {% now "Y-m-d H:i:s" %} ЗооЧудо
     </footer>
     </div>
+
+<script>
+    document.querySelector('.icon').addEventListener('click', function() {
+    document.querySelector('.side-menu').classList.toggle('show');
+});
+    document.querySelector('.hide-menu').addEventListener('click', function() {
+    document.querySelector('.side-menu').classList.toggle('show');
+});
+</script>
 
 </body>
 </html>

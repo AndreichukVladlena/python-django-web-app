@@ -1,21 +1,28 @@
-.color1 { color: #ff93d9; }
-.color2 { color: #ffcf9a; }
-.color3 { color: #3f0b0f; }
-.color4 { color: #90827b; }
-.color5 { color: #fffaf2; }
+.color1 { color: #393a10ff; }
+.color2 { color: #f0803cff; }
+.color3 { color: #dca667ff}
+.color4 { color: #c8cc92ff; }
+.color5 { color: #e4e6c9ff; }
+.color5 { color: #ffffffff; }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 body{
-    font: 20px 'Montserrat', Arial, sans-serif;
-    text-color: #3f0b0f;
+    font-family: 'Montserrat', sans-serif;
+    text-color: #393a10ff;
     margin: 0;
 	padding-top: 100px;
 }
 
 /*Выделенный текст*/
 ::selection {
-    background-color: #ff93d9;
-    color: #fffaf2;
+    background-color: #f0803cff;
+    color: #ffffffff;
+}
+
+footer{
+    text-align: right;
+    /*bottom: 0px;*/
+    padding-right: 100px;
 }
 
 
@@ -27,29 +34,141 @@ img {
     width: 400px;
 }
 
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #393a10ff;
+    color: white;
+    margin: 20px;
+}
+
+h1, h2, h3{
+    margin-left: 15px;
+}
+
+select, input{
+    display: inline-block;
+    padding: 10px 20px;
+    border-width: 1px;
+    border-color: #f0803cff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    margin: 20px;
+}
+
 .logo-link img {
     width: 10%;
 }
-
 [class^="horizontal"] {
-    display: flex;
     width: 100%;
-    color: #fffaf2;;
+    color: #ffffffff;;
     justify-content: space-between; /* Равномерное распределение между элементами */
     align-items: center; /* Выравнивание элементов по центру */
-    background-color: #3f0b0f;
-    padding: 40px 30px; /* Отступы вокруг ссылок */
+    background-color: #393a10ff;
+    padding: 40px;
 }
 
 .horizontal-nav{
+    font-size: x-large;
+    overflow: hidden;
     position: fixed;
-    width:100vw;
     top: 0px;
 }
 
 .horizontal-nav a{
-    color: #fffaf2;
-    display: inline-block;
+   padding: 20px;
+}
+
+.horizontal-nav a:visited{
+    color: #ffffffff;
+}
+
+.hide-menu{
+    color: black;
+    font-size: large;
+}
+
+.icon{
+    color: inherit;
+    padding: 20px;
+}
+
+.side-menu {
+    background-color: #c8cc92ff;
+    opacity: 0.8;
+    color: white;
+    position: fixed;
+    font-size: large;
+    font-weight: normal;
+    top: 0;
+    left: -250px; /* Начальное положение бокового меню за пределами видимой области */
+    width: 250px;
+    height: 100%;
+    padding-top: 20px;
+    transition: left 0.3s ease; /* Анимация для плавного появления/скрытия */
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 20px;
+}
+
+.side-menu li {
+    padding: 20px 0px 20px 0px;
+}
+
+.side-menu a:visited {
+    color: black;
+    text-decoration: none;
+    text-decoration-color: #f0803cff;
+}
+
+.side-menu.show {
+    left: 0; /* Показать боковое меню при добавлении класса .show */
+}
+
+.animal-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки с одинаковой шириной */
+    grid-template-rows: 1fr; /* Одна строка */
+    gap: 10px; /* Расстояние между элементами (по желанию) */
+    height: 60vh;
+    justify-content: left;
+    align-items: start;
+}
+
+/*.animal-details * {*/
+/*    justify-content: left;*/
+/*    align-items: start;*/
+/*}*/
+
+.animal-details img{
+    width: 70%;
+}
+/*.animal-details ul{*/
+/*    text-align: left;*/
+/*    width: 50%;*/
+/*    padding: 20px;*/
+/*}*/
+
+
+@keyframes icon-index {
+    0% {
+        transform: translateX(-1500px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .company-name{
@@ -57,6 +176,13 @@ img {
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 20px;
+    margin-block-end: 20px;
+    animation-name: icon-index;
+    animation-duration: 3s;
+}
+
+.company-name img{
+    width: 30%;
 }
 
 h1{
@@ -66,13 +192,13 @@ h1{
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 50px;
   font-style: italic;
   font-weight: 400;
 }
 h3 {
-  font-size: 40px;
-  font-weight: 500;
+  font-size: 25px;
+  font-weight: 300;
   line-height: 1.25em;
   margin: 0.5em 0;
 }
@@ -102,6 +228,10 @@ h3 + p {
     margin-top: 20px;
 }
 
+.margin{
+    padding-left: 50px;
+}
+
 /* Стили для каждой компании-партнёра */
 .partners td img{
     text-align: center;
@@ -122,7 +252,7 @@ h3 + p {
 
 .certificate {
     width: 40%;
-     margin: 0 auto; /* Автоматически центрирует контейнер по горизонтали */
+    margin: 0 auto; /* Автоматически центрирует контейнер по горизонтали */
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -165,7 +295,7 @@ h3 + p {
 .coupons {
     width: 90%; /* Ширина контейнера */
     margin: 0 auto; /* Центрирование контейнера по горизонтали */
-    padding: 20px; /* Поля вокруг контейнера */
+    /*padding: 20px; !* Поля вокруг контейнера *!*/
     font-style: normal;
 }
 
@@ -237,8 +367,31 @@ h3 + p {
 
 .history li:before {
     content: '\2015'; /* Символ маркера Unicode */
-    color: #3f0b0f;
+    color: #393a10ff;
 }
+
+[class*="news"] h3::first-letter{
+    font-weight: bold;
+    font-style: italic;
+    font-size: xx-large;
+}
+
+.news-index{
+    background-color: #c8cc92ff;
+    margin: 30px;
+    margin-left:0px;
+    width: 40%;
+    color: white;
+    padding: 50px;
+}
+
+.news-index img, .news-index h3{
+    padding-left: 40%;
+}
+
+.add-review:before{ content: "Нажмите, чтобы "}
+.add-review:after{ content: "! \1F60A"}
+
 
 /* Посещенные ссылки */
 a:visited {
@@ -248,13 +401,13 @@ a:visited {
 
 /* Не посещенные ссылки */
 a:not(:visited) {
-    color: #3f0b0f;
+    color: #393a10ff;
     text-decoration: none;
 }
 
 /* При наведении курсора */
 a:hover {
-    text-decoration: overline #ff93d9;
+    text-decoration: overline #f0803cff;
 }
 
 /* Нажатые ссылки */
@@ -279,7 +432,7 @@ ul li:last-child {
 
 /* n-й элемент в списке (например, третий элемент) */
 ul li:nth-child(3) {
-    color: #ff93d9;
+    color: #f0803cff;
 }
 
 /* Первая ячейка в таблице */
@@ -294,7 +447,7 @@ table tr:last-child td:last-child {
 
 /* n-я ячейка в таблице (например, вторая ячейка во второй строке) */
 table tr:nth-child(2) td:nth-child(2) {
-    background-color: #ff93d9;
+    background-color: #f0803cff;
 }
 
 .bold{

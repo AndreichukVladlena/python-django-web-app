@@ -15,10 +15,12 @@
     </form>
 </div>
 
+<div class="news-list">
+
 {% if news_list %}
     {% for news in news_list %}
     <div class="news">
-        <h2>{{ news.title }}</h2>
+        <h3>{{ news.title }}</h3>
         <p>{{ news.content|truncatechars:100 }}<a href="{% url 'zoo:news_detail' news.id %}">читать далее</a></p>
         <img src="{{ news.image.url }}" alt="{{ news.title }}">
     </div>
@@ -28,5 +30,6 @@
 <p>Ничего не найдено.</p>
 
 {% endif %}
+</div>
 
 {% endblock %}

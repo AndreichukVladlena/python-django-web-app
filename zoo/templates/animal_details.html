@@ -8,6 +8,10 @@
 
 {% block content %}
 
+<h1>{{animal.name}}</h1>
+
+<div class="animal-details">
+
 <img src="{{animal.photo.url}}">
 <ul>
 
@@ -15,7 +19,7 @@
     <a href="{% url 'zoo:edit_animal' animal.id %}">Редактировать</a>
     {% endif %}
 
-    <li>{{animal.name}}</li>
+    <li class="bold">{{animal.name}}</li>
     <li>Вид: {{animal.species}}</li>
     <li>Класс: {{animal.animal_class}}</li>
     <li>Страна обитания:
@@ -38,4 +42,5 @@
     </li>
     <li>Факты: {{animal.facts}}</li>
 </ul>
+</div>
 {% endblock %}
