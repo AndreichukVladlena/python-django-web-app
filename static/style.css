@@ -145,20 +145,9 @@ select, input{
     align-items: start;
 }
 
-/*.animal-details * {*/
-/*    justify-content: left;*/
-/*    align-items: start;*/
-/*}*/
-
 .animal-details img{
     width: 70%;
 }
-/*.animal-details ul{*/
-/*    text-align: left;*/
-/*    width: 50%;*/
-/*    padding: 20px;*/
-/*}*/
-
 
 @keyframes icon-index {
     0% {
@@ -294,8 +283,8 @@ h3 + p {
 /* Общие стили для контейнера с купонами */
 .coupons {
     width: 90%; /* Ширина контейнера */
-    margin: 0 auto; /* Центрирование контейнера по горизонтали */
-    /*padding: 20px; !* Поля вокруг контейнера *!*/
+    margin-bottom: 20px;
+    margin-left: 20px;
     font-style: normal;
 }
 
@@ -304,17 +293,20 @@ h3 + p {
 }
 
 .coupons td img {
-    max-width: 100px; /* Максимальная ширина изображения */
+    width: 100px;
     padding-right: 20px;
 }
 
 .coupons td {
-    padding-left: 20px; /* Отступ слева для текстовой информации */
-    outline: 3px solid darkgreen;
+    padding-left: 20px;
+}
+
+.coupons tr{
+    box-shadow: 0 1px 0 #393a10ff, 0 -1px 0 #393a10ff;
 }
 
 .coupons .date {
-    color: darkgreen;
+    color: #393a10ff;
     text-decoration: underline;
 }
 
@@ -322,23 +314,39 @@ h3 + p {
     padding: 20px;
 }
 
+.vacancies tr {
+    box-shadow: 0 1px 0 #393a10ff, 0 -1px 0 #393a10ff;
+}
+
 .vacancies table{
+     border-collapse: collapse;
     height: 50vh;
 }
 
-.vacancies th{
-   outline: 2px solid darkgreen;
+.vacancies thead{
+   background-image: linear-gradient(to right, white, #dca667ff 50%, white);
 }
 
 .vacancies td{
     padding-right: 20px;
     padding-left: 20px;
-    outline: 2px solid darkgreen;
 }
 
-.vacancies tr td:first-child{
-    font-weight: bold;
-    color: darkgreen;
+/*flexbox*/
+
+.employees{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.employees td{
+    width: 20vw;
+}
+
+.employees img{
+    width: 300px;
 }
 
 .error p{
@@ -348,7 +356,7 @@ h3 + p {
 
 .name_field {
     font-weight: bold;
-    color:darkgreen;
+    color:#393a10ff;
 }
 
 .employee_profile tr:last-child td:last-child{
@@ -376,7 +384,7 @@ h3 + p {
     font-size: xx-large;
 }
 
-.news-index{
+.news-index, .contacts{
     background-color: #c8cc92ff;
     margin: 30px;
     margin-left:0px;
@@ -389,9 +397,31 @@ h3 + p {
     padding-left: 40%;
 }
 
+.contacts{
+    width: 30%;
+    font-weight: bold;
+    font-size: x-large;
+    background-image: url("../media/logo.png");
+    background-color: #c8cc92ff;
+}
+
+.contacts dt, .contacts p{
+    background-color: #c8cc92ff;
+    background-image: none;
+    color: black;
+}
+
 .add-review:before{ content: "Нажмите, чтобы "}
 .add-review:after{ content: "! \1F60A"}
 
+figure{
+    float: left;
+    clear: left;
+}
+
+#desc li{
+    padding: 20px;
+}
 
 /* Посещенные ссылки */
 a:visited {
@@ -435,6 +465,20 @@ ul li:nth-child(3) {
     color: #f0803cff;
 }
 
+table td:empty{
+    background-color: #e4e6c9ff;
+    cursor: not-allowed;
+}
+
+th{
+    font-weight: bold;
+}
+
+td {
+  text-align: left; /* Горизонтальное выравнивание по центру */
+  vertical-align: middle; /* Вертикальное выравнивание по центру */
+}
+
 /* Первая ячейка в таблице */
 table tr:first-child td:first-child {
     font-weight: bold;
@@ -447,7 +491,7 @@ table tr:last-child td:last-child {
 
 /* n-я ячейка в таблице (например, вторая ячейка во второй строке) */
 table tr:nth-child(2) td:nth-child(2) {
-    background-color: #f0803cff;
+    background-image: radial-gradient(#dca667ff, white);
 }
 
 .bold{
