@@ -7,9 +7,10 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="news-details">
+    <h1>{{news}}</h1>
 <img src="{{news.image.url}}">
 <p><b>Дата:</b> {{news.publication_date}}</p>
 <p>{{news.content}}</p>
-
+</div>
 {% endblock %}

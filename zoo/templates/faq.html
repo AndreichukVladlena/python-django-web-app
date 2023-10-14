@@ -11,12 +11,14 @@
 <h1>Вопрос-ответ</h1>
 
 {% if user.is_authenticated %}
-    <a href="add_question">Задать вопрос</a>
+    <a href="add_question" class="add-question">Задать вопрос</a>
 {%endif%}
 
 {% for faq in faqs %}
-<p><span class="bold">{{faq}}</span> {{faq.publication_date}}</p>
-<p>{{faq.answer}}</p>
+<div class="faqs">
+<h3 class="question"><span class="bold">{{faq}}</span> {{faq.publication_date}}</h3>
+<p class="answer">{{faq.answer}}</p>
 <hr>
+</div>
 {% endfor %}
 {% endblock %}

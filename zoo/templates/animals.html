@@ -26,6 +26,7 @@
     <button type="submit">Сортировать</button>
 </form>
 
+<div class="animals">
 {% if animals %}
 <ul>
 {% for animal in animals%}
@@ -40,6 +41,6 @@
 {% else %}
 
 <p>Ничего не найдено.</p>
-
+</div>
 {% endif %}
 {% endblock %}

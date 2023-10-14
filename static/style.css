@@ -20,11 +20,10 @@ body{
 }
 
 footer{
+    margin-top: 30px;
     text-align: right;
-    /*bottom: 0px;*/
     padding-right: 100px;
 }
-
 
 video {
     width: 100%;
@@ -49,6 +48,7 @@ button {
 
 h1, h2, h3{
     margin-left: 15px;
+    text-transform: none;
 }
 
 select, input{
@@ -319,7 +319,7 @@ h3 + p {
 }
 
 .vacancies table{
-     border-collapse: collapse;
+    border-collapse: collapse;
     height: 50vh;
 }
 
@@ -330,6 +330,53 @@ h3 + p {
 .vacancies td{
     padding-right: 20px;
     padding-left: 20px;
+}
+
+.politics{
+    padding: 20px;
+    background-image: radial-gradient(#e4e6c9ff, white);
+}
+
+.politics h2{
+    text-transform: uppercase;
+}
+
+.politics h2 ~ p {
+    font-weight: bold;
+}
+
+
+.politics p + ul{
+    font-style: italic;
+    justify-content: space-around;
+}
+
+.faqs{
+    width: 90vw;
+    margin: 20px;
+}
+
+.faqs h3{
+    padding: 20px;
+    vertical-align: middle; /* Вертикальное выравнивание по центру */
+}
+
+.faqs .answer {
+    display: none; /* Сначала скрываем элементы с классом .answer */
+}
+
+.faqs:hover .answer {
+    display: block; /* Отображаем элементы с классом .answer при наведении на .faqs */
+    text-align: right;
+}
+
+.faqs .question {
+    display: block; /* Показываем элементы с классом .question всегда */
+    text-align: left;
+}
+
+.add-question{
+    padding: 20px;
 }
 
 /*flexbox*/
@@ -395,6 +442,17 @@ h3 + p {
 
 .news-index img, .news-index h3{
     padding-left: 40%;
+}
+
+.news-details{
+    height: 700px;
+    padding: 20px;
+}
+
+.news-details img{
+    padding-right: 20px;
+    width: 500px;
+    float: left;
 }
 
 .contacts{
