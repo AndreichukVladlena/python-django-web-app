@@ -6,11 +6,48 @@
 .color5 { color: #ffffffff; }
 
 
+
+@media screen and (max-width: 320px) and (orientation: landscape){
+    nav{
+        white-space: nowrap;
+        width: auto;
+        font-size: small;
+    }
+    body {
+        background-image: radial-gradient(red, white);
+    }
+}
+
+@media screen and (max-width: 575px) and (orientation: portrait){
+    nav{
+        white-space: nowrap;
+        width: auto;
+        font-size: small;
+    }
+    nav a{
+        padding: 0;
+        font-size: xx-small;
+    }
+    body {
+        background-image: linear-gradient(#393a10ff, white);
+    }
+}
+
+@media tv{
+     body {
+        background-image: linear-gradient(green, white);
+    }
+    nav{
+        background-color: #90827b;
+    }
+}
+
 body{
     font-family: 'Montserrat', sans-serif;
     text-color: #393a10ff;
     margin: 0;
 	padding-top: 100px;
+    overflow-x: hidden;
 }
 
 /*Выделенный текст*/
@@ -33,6 +70,12 @@ img {
     width: 400px;
 }
 
+video, iframe{
+    margin: 10px;
+    border: #c8cc92ff 10px solid;
+    border-radius: 7px;
+}
+
 button {
     display: inline-block;
     padding: 10px 20px;
@@ -44,6 +87,21 @@ button {
     background-color: #393a10ff;
     color: white;
     margin: 20px;
+}
+
+button:disabled{
+    background-color: #c8cc92ff;
+    color: #393a10ff;
+}
+
+input[type="checkbox"] + label{
+    color: #f0803cff;
+}
+
+
+input[type="checkbox"]:checked + label{
+    font-size: large;
+    color: #393a10ff;
 }
 
 h1, h2, h3{
@@ -63,7 +121,7 @@ p{
     word-break: break-all;
 }
 
-select, input{
+select, input, textarea{
     display: inline-block;
     padding: 10px 20px;
     border-width: 1px;
@@ -74,6 +132,10 @@ select, input{
     background-color: white;
     color: black;
     margin: 20px;
+}
+
+select:focus, input:focus, textarea:focus{
+    background-color: #e4e6c9ff;
 }
 
 .logo-link img {
@@ -440,14 +502,14 @@ h3 + p {
 
 /*flexbox*/
 
-.employees{
+.employees, .news-list{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
 }
 
-.employees td{
+.employees td, .news-list .news{
     width: 20vw;
 }
 
@@ -476,12 +538,23 @@ h3 + p {
 
 .history li {
     list-style: none;
-    padding-left: 0; /* Убираем отступ слева для списка */
+    padding-left: 0;
 }
 
 .history li:before {
     content: '\2015'; /* Символ маркера Unicode */
     color: #393a10ff;
+}
+
+.news-list .news{
+    padding: 20px;
+    width: 30vw;
+    height: 40vh;
+}
+
+.news img{
+    padding: 20px;
+    width: 70%;
 }
 
 [class*="news"] h3::first-letter{
@@ -514,10 +587,20 @@ h3 + p {
     float: left;
 }
 
+.news-list span{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.news-list a{
+    overflow: visible;
+}
+
 .contacts{
     width: 30%;
+    height: 30vh;
     font-weight: bold;
-    font-size: x-large;
+    font-size: large;
     background-image: url("../media/logo.png");
     background-color: #c8cc92ff;
 }

@@ -21,7 +21,7 @@
     {% for news in news_list %}
     <div class="news">
         <h3>{{ news.title }}</h3>
-        <p>{{ news.content|truncatechars:100 }}<a href="{% url 'zoo:news_detail' news.id %}">читать далее</a></p>
+        <span>{{ news.content|truncatechars:100  }}<a href="{% url 'zoo:news_detail' news.id %}">читать далее</a></span>
         <img src="{{ news.image.url }}" alt="{{ news.title }}">
     </div>
     {% endfor %}
