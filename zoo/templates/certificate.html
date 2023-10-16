@@ -2,16 +2,18 @@
 {% load static %}
 {% block content %}
 
-<h3>Сертификат от Министерства Здравоохранения</h3>
+<h1>Сертификат от Министерства Здравоохранения</h1>
 
 <div class="certificate">
+    <div class="certificate-background">
 <h1>Свидетельство о внесении сведений</h1>
-<p>Минск <span>15.09.2023</span></p>
+<p>Минск <span class="date">15.09.2023</span></p>
 <h3><abbr title="Некоммерческая организация">НКО</abbr> “ЗооЧудо”</h3>
 <h3>(ИНН 7731340252)</h3>
 <h3>Реестровый номер: 8241</h3>
 
 <a href="{% static 'media/certificate.png' %}" download>Скачать сертификат</a>
-</div>
+    </div>
+    </div>
 
 {% endblock %}

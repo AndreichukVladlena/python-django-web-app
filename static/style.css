@@ -49,6 +49,18 @@ button {
 h1, h2, h3{
     margin-left: 15px;
     text-transform: none;
+    font-variant: small-caps;
+}
+
+p{
+    padding: 1em;
+    margin: 1em;
+    text-indent: 20px;
+    line-height: 1.5em;
+    letter-spacing: normal;
+    word-spacing: 0.25em;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 select, input{
@@ -77,6 +89,7 @@ select, input{
 }
 
 .horizontal-nav{
+    z-index: 3;
     font-size: x-large;
     overflow: hidden;
     position: fixed;
@@ -143,10 +156,12 @@ select, input{
     height: 60vh;
     justify-content: left;
     align-items: start;
+    height: auto;
 }
 
 .animal-details img{
     width: 70%;
+    padding: 0 0 10% 10%;
 }
 
 @keyframes icon-index {
@@ -240,15 +255,35 @@ h3 + p {
 }
 
 .certificate {
+    background-image: url("../media/logo.png"), url("../media/logo.png");
+    background-repeat: repeat-y, repeat-y;
+    text-align: justify;
+    text-indent: 0px;
+    z-index: 2;
+    /*font-family: 'Montserrat', sans-serif;*/
+    font-family: 'Playfair Display', serif;
+    background-position: left, right;
+    background-size: 3%, 3%;
+    background-attachment: scroll, scroll;
     width: 40%;
     margin: 0 auto; /* Автоматически центрирует контейнер по горизонтали */
     display: flex;
-    flex-direction: column;
     height: 100vh;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-shadow: 1px 1px 1px #393a10ff;
+    margin-bottom: 50px;
+}
+
+.certificate-background{
+    z-index: 1;
+    height: inherit;
+    background: -moz-linear-gradient(to right, white, #c8cc92ff 50%, white);
 }
 
 .certificate h1 {
-    font-size: 24px;
+    padding: 50px;
+    font-size: 50px;
     font-weight: bold;
     text-align: center;
 }
@@ -259,11 +294,11 @@ h3 + p {
 }
 
 .certificate p {
-    font-size: 14px;
+    font-size: 30px;
     text-align: left;
 }
 
-.certificate span {
+.certificate .date {
     float: right;
 }
 
@@ -305,7 +340,7 @@ h3 + p {
     box-shadow: 0 1px 0 #393a10ff, 0 -1px 0 #393a10ff;
 }
 
-.coupons .date {
+[class="date"] {
     color: #393a10ff;
     text-decoration: underline;
 }
