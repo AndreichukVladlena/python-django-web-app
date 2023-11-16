@@ -43,7 +43,7 @@
 }
 
 body{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     text-color: #393a10ff;
     margin: 0;
 	padding-top: 100px;
@@ -52,7 +52,7 @@ body{
 
 /*Выделенный текст*/
 ::selection {
-    background-color: #f0803cff;
+    background-color: #dca667ff;
     color: #ffffffff;
 }
 
@@ -118,7 +118,7 @@ p{
     letter-spacing: normal;
     word-spacing: 0.25em;
     word-wrap: break-word;
-    word-break: break-all;
+    /*word-break: break-all;*/
 }
 
 select, input, textarea{
@@ -322,7 +322,7 @@ h3 + p {
     text-align: justify;
     text-indent: 0px;
     z-index: 2;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', Arial, serif;
     background-position: left, right;
     background-size: 3%, 3%;
     background-attachment: scroll, scroll;
@@ -353,7 +353,6 @@ h3 + p {
 }
 
 .shtamp-certificate img{
-    /*padding: inherit;*/
     z-index: 0;
     opacity: 0.4;
     width: auto;
@@ -614,9 +613,19 @@ h3 + p {
 .add-review:before{ content: "Нажмите, чтобы "}
 .add-review:after{ content: "! \1F60A"}
 
-figure{
+@keyframes rotate {
+    from {
+        transform: rotate(0deg); /* Изначальное положение - 0 градусов вращения */
+    }
+    to {
+        transform: rotate(360deg); /* Конечное положение - 360 градусов вращения (полный оборот) */
+    }
+}
+
+figure img{
     float: left;
     clear: left;
+    animation: rotate 5s linear infinite;
 }
 
 #desc li{

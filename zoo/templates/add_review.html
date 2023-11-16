@@ -9,6 +9,7 @@
 {% block content %}
 <h1>Добавить отзыв</h1>
 <form method="post">
+
     {% csrf_token %}
     <div class="form-group">
         <label for="description">Отзыв:</label>
@@ -19,7 +20,12 @@
         <input type="number" class="form-control" id="grade" name="grade" min="1" max="5" required>
     </div>
     <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+
+
     <input type="checkbox" id="testcheck">
     <label for="testcheck">Нерабочий чек-бокс</label>
+    <button type="submit" disabled>Нерабочая кнопка</button>
+
+
 </form>
 {% endblock %}

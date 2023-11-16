@@ -8,6 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Playfair+Display&display=swap" rel="stylesheet">
@@ -51,6 +52,8 @@
         <a href="/reviews" class="nav-link">Отзывы</a>
         <a href="/about" class="nav-link">О нас</a>
 
+        <span class="timer"></span>
+
         </div>
     </nav>
 
@@ -67,14 +70,7 @@
     </footer>
     </div>
 
-<script>
-    document.querySelector('.icon').addEventListener('click', function() {
-    document.querySelector('.side-menu').classList.toggle('show');
-});
-    document.querySelector('.hide-menu').addEventListener('click', function() {
-    document.querySelector('.side-menu').classList.toggle('show');
-});
-</script>
+<script src="{% static 'script.js' %}"></script>
 
 </body>
 </html>
