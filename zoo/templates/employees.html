@@ -10,8 +10,8 @@
 <h1>Сотрудники зоопарка</h1>
 <ul class="employees">
 {% for employee in employees%}
- <table>
-        <tr><td>
+ <table class="employee-table">
+        <tr class="employee-info"><td class="employee-image">
     <img src={{employee.image.url}}>
         </td>
             <td>

@@ -30,7 +30,7 @@
 {% if animals %}
 <ul>
 {% for animal in animals%}
-<li>
+<li class="animal-animation">
     <h2><a href="{% url 'zoo:animal_details' animal.id %}" >{{animal.name}}</a></h2>
     <img src="{{animal.photo.url}}" alt="image">
     <br>

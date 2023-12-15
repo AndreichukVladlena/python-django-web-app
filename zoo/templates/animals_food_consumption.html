@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 
@@ -11,7 +12,7 @@
 <h1>Трекер питания моих животных</h1>
 
 {% if user.is_staff %}
-       <form method="get">
+       <form method="get" id="food-consumption-form">
 
        <label for="date_input">Дата:</label>
        <input type="date" id="date_input" name="selected_date">
@@ -23,7 +24,7 @@
             {% endfor %}
         </select>
 
-        <input type="submit" value="Показать данные">
+        <input type="submit" id="show-info-submit" value="Показать данные">
 
     </form>
 
@@ -38,10 +39,13 @@
                 <p><b>Еда:</b> {{ food_consumption.food.name }}</p>
                 <p><b>Состав:</b> {{ food_consumption.food.composition }}</p>
                 <p><b>Дата:</b> {{ food_consumption.date }}</p>
-                <p><b>Количество:</b> {{ food_consumption.daily_amount }} гр.</p>
+                <p><b>Количество:</b><span id="amount"> {{ food_consumption.daily_amount }} </span></p>
             </li>
             {% endfor %}
         </ul>
+        <div id="result-sum">
+         <input type="button" value="Cумма еды" id="sum-food">
+        </div>
          {% else %}
          <p>Выберите животное и дату</p>
          {% endif %}
@@ -50,5 +54,6 @@
     <p>{{ error_message }}</p>
 {% endif %}
 
+<script src="{% static 'animalFood.js' %}"></script>
 
 {% endblock %}

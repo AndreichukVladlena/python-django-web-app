@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+
+task 11
+
+{% endblock %}
+
+{% block content %}
+<body>
+    <form id="carForm">
+        <label for="carBrand">Марка автомобиля:</label>
+        <input type="text" id="carBrand" name="carBrand" required>
+
+        <label for="carNumber">Номер автомобиля:</label>
+        <input type="text" id="carNumber" name="carNumber" required>
+
+        <label for="ownerName">Фамилия владельца:</label>
+        <input type="text" id="ownerName" name="ownerName" required>
+
+        <button type="button" id="add-car">Добавить автомобиль</button>
+    </form>
+
+    <hr>
+
+    <form id="searchForm">
+        <label for="searchBrand">Поиск по марке:</label>
+        <input type="text" id="searchBrand" name="searchBrand" required>
+
+        <button type="button" id="find-car">Найти автомобили</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script src="{% static 'task_11.js' %}"></script>
+
+{% endblock %}
+

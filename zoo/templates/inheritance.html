@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+
+Наследование
+
+{% endblock %}
+
+{% block content %}
+
+<h2>Прототипное наследование</h2>
+
+<p>Lion->Mammal->Animal</p>
+
+<div class="prototype-inheritance">
+
+<input type="button" id="introduce-button" value="introduce()">
+<input type="button" id="age-button" value="age()">
+<input type="button" id="sound-button" value="sound()">
+<input type="button" id="roar-button" value="roar()">
+<input type="button" id="hunt-button" value="hunt()">
+
+</div>
+
+<p type="text" id="proto-result-text"></p>
+
+<h2>Наследование «class» / «extends»</h2>
+
+<p>Trainer->AnimalHandler->ZooWorker</p>
+
+<div class="extends-inheritance">
+
+<input type="button" id="worker-info-button" value="info">
+<input type="button" id="training-meth-button" value="getTrainingMethod()">
+<input type="button" id="train-animal-button" value="trainAnimal()">
+
+</div>
+
+<p type="text" id="extends-result-text"></p>
+
+
+<script src="{% static 'inheritance.js' %}"></script>
+
+{% endblock %}

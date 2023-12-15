@@ -11,7 +11,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 import requests
 from django.contrib.auth import logout
-from django.utils import timezone 
+from django.utils import timezone
+from django.http import JsonResponse
 
 
 def index(request):
@@ -73,6 +74,9 @@ def employees(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def test_js(request):
+    return render(request, 'test_js.html')
 
 def politics(request):
     return render(request, 'politics.html')
@@ -344,3 +348,9 @@ def coupons(request):
 
 def listing(request):
     return render(request, "listing.html")
+
+def task_11(request):
+    return render(request, "task_11.html")
+
+def inheritance(request):
+    return render(request, "inheritance.html")

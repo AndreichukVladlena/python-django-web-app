@@ -13,6 +13,7 @@ urlpatterns = [
     path('animals/<int:animal_id>', views.animal_details, name='animal_details'),
     path('animals', views.animals, name='animals'),
     path('about', views.about, name='about'),
+    path('test_js', views.test_js, name='test_js'),
     path('enclosures', views.enclosures, name='enclosures'),
     path('enclosures/<int:enclosure_id>', views.enclosure_details, name='enclosure_details'),
     path('profile', views.profile, name='profile'),
@@ -33,6 +34,9 @@ urlpatterns = [
     path('add_review', views.add_review, name='add_review'),
     path('coupons', views.coupons, name='coupons'),
     path('listing', views.listing, name='listing'),
+    path('task_11', views.task_11, name='task_11'),
+    path('inheritance', views.inheritance, name='inheritance'),
+
 
     # Другие URL-маршруты для вашего приложения
 ]
